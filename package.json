@@ -1,0 +1,2 @@
+{ "name": "browser-duel-bench", "private": true, "type": "module",
+  "scripts": { "bench": "bun src/run.ts", "serve": "bun src/fixtures.ts" } }

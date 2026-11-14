@@ -1,0 +1,21 @@
+{
+  "model": "claude-sonnet-5-5",
+  "unit": "USD per million tokens",
+  "rates": {
+    "raw_input": 2.0,
+    "cache_creation": 4.0,
+    "cache_read": 0.1,
+    "output_tokens": 10.0
+  },
+  "fitted_from": "least squares of cost_usd on (raw_input, cache_creation, cache_read, output_tokens) over 1778 completed claude-sonnet-5-5 rows in results/*/runs.jsonl (result-event totals)",
+  "fit_quality": "max relative error 2e-15: the reported cost is exactly linear in these four token counts at these rates",
+  "caveat": "all cache creation in the fitted runs was the 1-hour kind; a different TTL mix would price cache_creation differently. Refit with src/fit-prices.ts if the model or pricing changes.",
+  "label": "estimate",
+  "output_calibration": {
+    "why": "assistant events of a stream-json transcript carry output_tokens as counted when the message started (median 31% of the final count); input-side counts are exact",
+    "formula": "output_tokens = max(event output_tokens, round(chars_per_token_inv * chars + per_turn * turns)), chars = text + tool_use name + JSON of tool_use input",
+    "chars_per_token_inv": 0.4,
+    "per_turn": 40,
+    "validated_on": "1778 completed runs, cost from events with the result event removed vs reported cost: ratio p5 0.93, median 1.007, p95 1.06"
+  }
+}

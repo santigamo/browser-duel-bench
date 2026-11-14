@@ -1,0 +1,18 @@
+{
+ "_comment": "Template for the blind2 report. Copy to manifest-blind2.json, replace the dir with the real results dir(s) of the c1..c20 run, then: python3 src/final.py manifest-blind2.json --report blind2 > results/<dir>/report-blind2.md. Replacements/exclusions work as in manifest-final.json (every exclusion needs a reason).",
+ "report": "blind2",
+ "group": "blind2",
+ "primary": [
+  "ab-cli:r8",
+  "browse-mcp"
+ ],
+ "secondary": [
+  "ab-cli:r8",
+  "ab-cli:r7"
+ ],
+ "dirs": [
+  {
+   "dir": "results/2026-11-08T18-30-37-blind2-sonnet"
+  }
+ ]
+}

@@ -1,0 +1,14 @@
+{
+ "_comment": "Manifest of the r9 report. Regenerate with: python3 src/final.py manifest-blind3.json --report r9 > results/2026-11-13T10-51-21-blind3-final/report-r9.md. 'primary' is [ours, reference]; 'ours' and 'reference' are accepted instead.",
+ "report": "r9",
+ "group": "blind3",
+ "primary": [
+  "ab-cli:r9",
+  "browse-mcp"
+ ],
+ "dirs": [
+  {
+   "dir": "results/2026-11-13T10-51-21-blind3-final"
+  }
+ ]
+}

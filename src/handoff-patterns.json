@@ -1,0 +1,8 @@
+{
+  "_comment": "Patterns read by src/handoff.ts (tested in tests/handoff.test.ts). Human-handoff rule: see guard/handoff-policy.md.",
+  "code_call": "(?<![\\w$])handoff\\s*\\(",
+  "message_arg": "(?<![\\w$])handoff\\s*\\(\\s*([\"'`])((?:\\\\.|(?!\\1).)*)\\1",
+  "code_fields": ["code", "script", "expression", "source", "js"],
+  "tool_name": "(?:^|[_.])(?:handoff|hand_off|human_handoff|request_human|ask_human)$",
+  "ab_cli_subcommand": "agent-browser(?:\\s+(?:--session|--profile|--executable-path|--proxy)\\s+\\S+|\\s+--?[\\w-]+(?:=\\S+)?)*\\s+(?:handoff|hand-off|takeover)(?![\\w-])"
+}

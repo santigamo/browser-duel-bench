@@ -1,0 +1,17 @@
+{
+  "comment": "Provider-limit messages. Single source of truth: run.ts, summarize.ts (via measure.ts) and final.py all read this file. A run whose error text matches is status=quota_abort, never a task failure.",
+  "flags": "i",
+  "patterns": [
+    "usage limit",
+    "rate.?limit",
+    "hit your limit",
+    "out of extra usage",
+    "\\d+-?\\s?hour limit",
+    "(weekly|daily|monthly|session) limit",
+    "limit (reached|exceeded)",
+    "limit resets",
+    "credit balance is too low",
+    "overloaded_error",
+    "quota"
+  ]
+}
