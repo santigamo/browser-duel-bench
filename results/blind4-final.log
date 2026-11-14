@@ -1,0 +1,287 @@
+$ bun src/run.ts --variants "ab-cli:r10,ab-cli:v043,browse-mcp" --bins "main=<home>/code/browser-duel/agent-browser-r10/cli/target/release/agent-browser,r10=<home>/code/browser-duel/agent-browser-r10/cli/target/release/agent-browser,v043=<home>/code/browser-duel/ab-v043/cli/target/release/agent-browser" --tasks "blind4" --n "1" --seed "20261114" --static false --label "blind4-final"
+scoring contract preflight (full) ok for 40 tasks
+results -> <home>/Code/browser-duel/bench/results/2026-11-14T13-58-33-blind4-final
+[1/120] g1 ab-cli:r10 #1: OK  36.7s steps=3 usd=0.028167800000000003 in_ex=4721 cw=7298(proxy) out=747 viol=0 nav=1 batch=0 run=1 ans="11; 2026-11-09" truth="L2 n=11 latest=2026-11-09"
+[2/120] g1 browse-mcp #1: OK  6.6s steps=2 usd=0.0539789 in_ex=11718 cw=14229(proxy) out=512 viol=0 nav=1 batch=0 run=0 ans="11; 2026-11-09" truth="L2 n=11 latest=2026-11-09"
+[3/120] g1 ab-cli:v043 #1: OK  13.5s steps=5 usd=0.05141350000000001 in_ex=9531 cw=14583(proxy) out=918 viol=0 nav=1 batch=0 run=0 ans="11; 2026-11-09" truth="L2 n=11 latest=2026-11-09"
+[4/120] g2 ab-cli:r10 #1: OK  51.7s steps=11 usd=0.0719591 in_ex=9999 cw=22768(proxy) out=2138 viol=0 nav=4 batch=0 run=1 ans="18" truth="18"
+[5/120] g2 ab-cli:v043 #1: OK  15.6s steps=3 usd=0.034207800000000003 in_ex=6319 cw=9579(proxy) out=632 viol=0 nav=2 batch=0 run=0 ans="18" truth="18"
+[6/120] g2 browse-mcp #1: OK  10.6s steps=2 usd=0.0307005 in_ex=5270 cw=9080(proxy) out=647 viol=0 nav=1 batch=0 run=0 ans="18" truth="18"
+[7/120] g3 browse-mcp #1: OK  9.3s steps=4 usd=0.0296919 in_ex=4676 cw=10599(proxy) out=565 viol=0 nav=4 batch=0 run=0 ans="5516" truth="1717+3799=5516"
+[8/120] g3 ab-cli:r10 #1: OK  21.2s steps=6 usd=0.033588099999999996 in_ex=3699 cw=9361(proxy) out=1462 viol=0 nav=5 batch=0 run=1 ans="5516" truth="1717+3799=5516"
+[9/120] g3 ab-cli:v043 #1: OK  39.4s steps=14 usd=0.07589970000000001 in_ex=8854 cw=25809(proxy) out=2621 viol=0 nav=7 batch=0 run=0 ans="5516" truth="1717+3799=5516"
+[10/120] g4 ab-cli:r10 #1: FAIL 7.4s steps=1 usd=0.012023699999999998 in_ex=1497 cw=2924(proxy) out=513 viol=0 nav=1 batch=0 run=1 ans="51" truth="{\"6.1010\":12,\"6.1020\":15,\"6.1210\":12,\"6."
+[11/120] g4 browse-mcp #1: FAIL 5.9s steps=1 usd=0.0133256 in_ex=2310 cw=4361(proxy) out=227 viol=0 nav=1 batch=0 run=0 ans="51" truth="{\"6.1010\":12,\"6.1020\":15,\"6.1210\":12,\"6."
+[12/120] g4 ab-cli:v043 #1: FAIL 10.9s steps=4 usd=0.0264769 in_ex=4382 cw=8149(proxy) out=578 viol=0 nav=1 batch=0 run=0 ans="51" truth="{\"6.1010\":12,\"6.1020\":15,\"6.1210\":12,\"6."
+[13/120] g5 ab-cli:r10 #1: OK  12.2s steps=3 usd=0.0194683 in_ex=3065 cw=5744(proxy) out=505 viol=0 nav=3 batch=0 run=1 ans="11; 2596" truth="11; 2596 (of 101)"
+[14/120] g5 ab-cli:v043 #1: OK  20s steps=4 usd=0.0491036 in_ex=9249 cw=13448(proxy) out=881 viol=0 nav=3 batch=0 run=0 ans="11; 2596" truth="11; 2596 (of 101)"
+[15/120] g5 browse-mcp #1: OK  109.9s steps=4 usd=0.039108000000000004 in_ex=5565 cw=12344(proxy) out=1121 viol=0 nav=3 batch=0 run=0 ans="11; 2596" truth="11; 2596 (of 101)"
+[16/120] g6 ab-cli:v043 #1: OK  8.5s steps=2 usd=0.029437 in_ex=5758 cw=7783(proxy) out=488 viol=0 nav=1 batch=0 run=0 ans="Rogue One: A Star Wars Story; 50.4%" truth="Rogue One: A Star Wars Story; 50.4%"
+[17/120] g6 browse-mcp #1: OK  7.6s steps=2 usd=0.0172121 in_ex=2530 cw=5836(proxy) out=422 viol=0 nav=1 batch=0 run=0 ans="Rogue One: A Star Wars Story; 50.4%" truth="Rogue One: A Star Wars Story; 50.4%"
+[18/120] g6 ab-cli:r10 #1: OK  6.5s steps=1 usd=0.0112789 in_ex=1813 cw=3031(proxy) out=313 viol=0 nav=1 batch=0 run=1 ans="Rogue One: A Star Wars Story; 50.4%" truth="Rogue One: A Star Wars Story; 50.4%"
+[19/120] g7 ab-cli:r10 #1: OK  11.9s steps=4 usd=0.0261161 in_ex=2717 cw=6645(proxy) out=1260 viol=0 nav=1 batch=0 run=1 ans="Washington Capitals; +81" truth="Washington Capitals; +81 (30 teams)"
+[20/120] g7 ab-cli:v043 #1: OK  13.6s steps=3 usd=0.027876599999999998 in_ex=4188 cw=7454(proxy) out=875 viol=0 nav=1 batch=0 run=0 ans="Washington Capitals; +81" truth="Washington Capitals; +81 (30 teams)"
+[21/120] g7 browse-mcp #1: OK  9.1s steps=3 usd=0.0236521 in_ex=2931 cw=7675(proxy) out=800 viol=0 nav=1 batch=0 run=0 ans="Washington Capitals; +81" truth="Washington Capitals; +81 (30 teams)"
+[22/120] g8 ab-cli:r10 #1: OK  4.2s steps=1 usd=0.0132978 in_ex=2523 cw=3658(proxy) out=231 viol=0 nav=2 batch=0 run=1 ans="13.0.0-4+b2; 14.1.1-1+b4" truth="13.0.0-4+b2; 14.1.1-1+b4"
+[23/120] g8 ab-cli:v043 #1: OK  10.3s steps=4 usd=0.0271413 in_ex=4354 cw=8195(proxy) out=656 viol=0 nav=2 batch=0 run=0 ans="13.0.0-4+b2; 14.1.1-1+b4" truth="13.0.0-4+b2; 14.1.1-1+b4"
+[24/120] g8 browse-mcp #1: OK  5.6s steps=2 usd=0.0192178 in_ex=3268 cw=6429(proxy) out=333 viol=0 nav=2 batch=0 run=0 ans="13.0.0-4+b2; 14.1.1-1+b4" truth="13.0.0-4+b2; 14.1.1-1+b4"
+[25/120] g9 ab-cli:r10 #1: OK  4.6s steps=1 usd=0.008701799999999999 in_ex=1472 cw=2566(proxy) out=192 viol=0 nav=1 batch=0 run=1 ans="44" truth="15+29=44"
+[26/120] g9 ab-cli:v043 #1: OK  10.4s steps=4 usd=0.0247916 in_ex=4211 cw=7949(proxy) out=470 viol=0 nav=2 batch=0 run=0 ans="44" truth="15+29=44"
+[27/120] g9 browse-mcp #1: OK  5.1s steps=1 usd=0.0121636 in_ex=2018 cw=4066(proxy) out=228 viol=0 nav=2 batch=0 run=0 ans="44" truth="15+29=44"
+[28/120] g10 ab-cli:v043 #1: OK  13.6s steps=6 usd=0.030748099999999997 in_ex=4185 cw=9887(proxy) out=926 viol=0 nav=1 batch=0 run=0 ans="20978" truth="20977.52"
+[29/120] g10 ab-cli:r10 #1: OK  7.1s steps=1 usd=0.010776400000000002 in_ex=1322 cw=2687(proxy) out=459 viol=0 nav=1 batch=0 run=1 ans="20978" truth="20977.52"
+[30/120] g10 browse-mcp #1: OK  5.8s steps=1 usd=0.012696299999999999 in_ex=2015 cw=4121(proxy) out=282 viol=0 nav=1 batch=0 run=0 ans="20978" truth="20977.52"
+[31/120] g11 browse-mcp #1: OK  5.1s steps=1 usd=0.0136926 in_ex=2030 cw=4227(proxy) out=376 viol=0 nav=1 batch=0 run=0 ans="11; 2" truth="11; 2"
+[32/120] g11 ab-cli:r10 #1: OK  6.6s steps=1 usd=0.0627547 in_ex=14560 cw=15825(proxy) out=362 viol=0 nav=2 batch=0 run=1 ans="11; 2" truth="11; 2"
+[33/120] g11 ab-cli:v043 #1: OK  7.1s steps=2 usd=0.0209704 in_ex=3647 cw=5775(proxy) out=474 viol=0 nav=1 batch=0 run=0 ans="11; 2" truth="11; 2"
+[34/120] g12 ab-cli:r10 #1: OK  6.5s steps=1 usd=0.0140128 in_ex=2622 cw=3788(proxy) out=263 viol=0 nav=2 batch=0 run=1 ans="106060" truth="392056-285996=106060"
+[35/120] g12 ab-cli:v043 #1: OK  15.1s steps=6 usd=0.031936000000000006 in_ex=4842 cw=10643(proxy) out=755 viol=0 nav=2 batch=0 run=0 ans="106060" truth="392056-285996=106060"
+[36/120] g12 browse-mcp #1: OK  7.1s steps=2 usd=0.0219819 in_ex=3910 cw=7078(proxy) out=354 viol=0 nav=2 batch=0 run=0 ans="106060" truth="392056-285996=106060"
+[37/120] g13 ab-cli:v043 #1: OK  9.8s steps=4 usd=0.025141399999999998 in_ex=3902 cw=7695(proxy) out=640 viol=0 nav=1 batch=0 run=0 ans="South End; 92" truth="South End; 92 (ties: 1) rows=64"
+[38/120] g13 ab-cli:r10 #1: OK  5.5s steps=1 usd=0.016707600000000003 in_ex=3285 cw=4458(proxy) out=267 viol=0 nav=1 batch=0 run=1 ans="South End; 92" truth="South End; 92 (ties: 1) rows=64"
+[39/120] g13 browse-mcp #1: OK  5.9s steps=1 usd=0.0197195 in_ex=3301 cw=5595(proxy) out=470 viol=0 nav=1 batch=0 run=0 ans="South End; 92" truth="South End; 92 (ties: 1) rows=64"
+[40/120] g14 ab-cli:v043 #1: OK  20.9s steps=4 usd=0.0347119 in_ex=5198 cw=9499(proxy) out=1071 viol=0 nav=17 batch=0 run=0 ans="7; Joseph Louis Lagrange" truth="7; Joseph Louis Lagrange"
+[41/120] g14 ab-cli:r10 #1: OK  8s steps=1 usd=0.012611 in_ex=1588 cw=3031(proxy) out=536 viol=0 nav=8 batch=0 run=1 ans="7; Joseph Louis Lagrange" truth="7; Joseph Louis Lagrange"
+[42/120] g14 browse-mcp #1: OK  8.9s steps=1 usd=0.0172709 in_ex=2446 cw=4838(proxy) out=567 viol=0 nav=8 batch=0 run=0 ans="7; Joseph Louis Lagrange" truth="7; Joseph Louis Lagrange"
+[43/120] g15 ab-cli:v043 #1: OK  9.5s steps=3 usd=0.0232396 in_ex=4172 cw=6978(proxy) out=418 viol=0 nav=1 batch=0 run=0 ans="9310" truth="58.5c,62.5c,16c => 9310"
+[44/120] g15 browse-mcp #1: OK  7.3s steps=2 usd=0.017516 in_ex=2690 cw=5921(proxy) out=393 viol=0 nav=1 batch=0 run=0 ans="9310" truth="58.5c,62.5c,16c => 9310"
+[45/120] g15 ab-cli:r10 #1: OK  5.9s steps=1 usd=0.009861700000000001 in_ex=1708 cw=2829(proxy) out=213 viol=0 nav=1 batch=0 run=1 ans="9310" truth="58.5c,62.5c,16c => 9310"
+[46/120] g16 browse-mcp #1: OK  34.7s steps=7 usd=0.061650199999999995 in_ex=9015 cw=20912(proxy) out=1525 viol=0 nav=13 batch=0 run=0 ans="Bilbao Aeropuerto; Madrid, Retiro; 713 mm" truth="Bilbao Aeropuerto; Madrid, Retiro; 713"
+[47/120] g16 ab-cli:v043 #1: OK  39.4s steps=18 usd=0.0908777 in_ex=11386 cw=35021(proxy) out=2419 viol=0 nav=12 batch=0 run=0 ans="Bilbao Aeropuerto; Madrid, Retiro; 713 mm" truth="Bilbao Aeropuerto; Madrid, Retiro; 713"
+[48/120] g16 ab-cli:r10 #1: OK  51.5s steps=10 usd=0.0504539 in_ex=5457 cw=15173(proxy) out=2106 viol=0 nav=13 batch=0 run=1 ans="Bilbao Aeropuerto; Madrid, Retiro; 713 mm" truth="Bilbao Aeropuerto; Madrid, Retiro; 713"
+[49/120] g17 ab-cli:v043 #1: OK  9.6s steps=3 usd=0.024456000000000002 in_ex=4083 cw=7102(proxy) out=569 viol=0 nav=1 batch=0 run=0 ans="12; 24" truth="2026 Nov 12 10y=5.1 2y=4.86 => 12; 24"
+[50/120] g17 browse-mcp #1: OK  5.2s steps=1 usd=0.018231400000000002 in_ex=3221 cw=5399(proxy) out=353 viol=0 nav=1 batch=0 run=0 ans="12; 24" truth="2026 Nov 12 10y=5.1 2y=4.86 => 12; 24"
+[51/120] g17 ab-cli:r10 #1: OK  4.9s steps=1 usd=0.014271500000000001 in_ex=2503 cw=3747(proxy) out=336 viol=0 nav=1 batch=0 run=1 ans="12; 24" truth="2026 Nov 12 10y=5.1 2y=4.86 => 12; 24"
+[52/120] g18 browse-mcp #1: OK  7.3s steps=2 usd=0.0256024 in_ex=4332 cw=7722(proxy) out=544 viol=0 nav=1 batch=0 run=0 ans="11; 5" truth="11; 5 (all rows 14)"
+[53/120] g18 ab-cli:v043 #1: OK  17.1s steps=6 usd=0.038569099999999995 in_ex=5221 cw=11306(proxy) out=1292 viol=0 nav=1 batch=0 run=0 ans="11; 5" truth="11; 5 (all rows 14)"
+[54/120] g18 ab-cli:r10 #1: OK  6.9s steps=2 usd=0.0199036 in_ex=3289 cw=5261(proxy) out=532 viol=0 nav=1 batch=0 run=1 ans="11; 5" truth="11; 5 (all rows 14)"
+[55/120] g19 ab-cli:v043 #1: OK  41.9s steps=7 usd=0.058727299999999996 in_ex=9316 cw=17536(proxy) out=1475 viol=0 nav=9 batch=0 run=0 ans="124.85" truth="79.95+24.95+19.95=124.85"
+[56/120] g19 ab-cli:r10 #1: OK  96s steps=15 usd=0.10971819999999999 in_ex=12575 cw=32916(proxy) out=4349 viol=0 nav=12 batch=0 run=1 ans="124.85" truth="79.95+24.95+19.95=124.85"
+[57/120] g19 browse-mcp #1: OK  68.7s steps=4 usd=0.0438361 in_ex=6555 cw=13643(proxy) out=1172 viol=0 nav=11 batch=0 run=0 ans="124.85" truth="79.95+24.95+19.95=124.85"
+[58/120] g20 ab-cli:r10 #1: OK(unclean) 5.4s steps=1 usd=0.012259299999999999 in_ex=1808 cw=3126(proxy) out=413 viol=1 nav=3 batch=0 run=1 ans="13; 12; 12; 37" truth="13; 12; 12; 37"
+[59/120] g20 browse-mcp #1: OK(unclean) 5.8s steps=1 usd=0.0165872 in_ex=2393 cw=4736(proxy) out=520 viol=1 nav=3 batch=0 run=0 ans="13; 12; 12; 37" truth="13; 12; 12; 37"
+[60/120] g20 ab-cli:v043 #1: OK(unclean) 7.6s steps=2 usd=0.0240709 in_ex=3745 cw=6134(proxy) out=746 viol=1 nav=3 batch=0 run=0 ans="13; 12; 12; 37" truth="13; 12; 12; 37"
+[61/120] g21 ab-cli:r10 #1: OK  11.2s steps=4 usd=0.0348859 in_ex=5798 cw=9412(proxy) out=900 viol=0 nav=2 batch=0 run=1 ans="10" truth="10 (L. HAMILTON:4,J. BUTTON:3,M. WEBBER:"
+[62/120] g21 browse-mcp #1: OK  11.5s steps=3 usd=0.035485600000000006 in_ex=5730 cw=10617(proxy) out=855 viol=0 nav=1 batch=0 run=0 ans="10" truth="10 (L. HAMILTON:4,J. BUTTON:3,M. WEBBER:"
+[63/120] g21 ab-cli:v043 #1: OK  13.8s steps=4 usd=0.037908899999999995 in_ex=6656 cw=10644(proxy) out=813 viol=0 nav=1 batch=0 run=0 ans="10" truth="10 (L. HAMILTON:4,J. BUTTON:3,M. WEBBER:"
+[64/120] g22 ab-cli:r10 #1: OK  14.6s steps=2 usd=0.017953200000000002 in_ex=2173 cw=4417(proxy) out=781 viol=0 nav=7 batch=0 run=1 ans="Cloister Reserve Blend Espresso; $1.83" truth="Cloister Reserve Blend Espresso; 1.83"
+[65/120] g22 browse-mcp #1: OK  14.7s steps=3 usd=0.0282619 in_ex=4302 cw=9162(proxy) out=690 viol=0 nav=7 batch=0 run=0 ans="Cloister Reserve Blend Espresso; $1.83" truth="Cloister Reserve Blend Espresso; 1.83"
+[66/120] g22 ab-cli:v043 #1: OK  24.7s steps=8 usd=0.0407519 in_ex=4949 cw=12945(proxy) out=1444 viol=0 nav=6 batch=0 run=0 ans="Cloister Reserve Blend Espresso; $1.83" truth="Cloister Reserve Blend Espresso; 1.83"
+[67/120] g23 ab-cli:v043 #1: OK  9.7s steps=2 usd=0.018295499999999996 in_ex=3377 cw=5324(proxy) out=317 viol=0 nav=2 batch=0 run=0 ans="94" truth="173-79=94"
+[68/120] g23 ab-cli:r10 #1: OK  10.7s steps=1 usd=0.0097646 in_ex=1736 cw=2828(proxy) out=193 viol=0 nav=2 batch=0 run=1 ans="94" truth="173-79=94"
+[69/120] g23 browse-mcp #1: OK  11.1s steps=1 usd=0.012810600000000002 in_ex=2228 cw=4254(proxy) out=209 viol=0 nav=2 batch=0 run=0 ans="94" truth="173-79=94"
+[70/120] g24 ab-cli:v043 #1: OK  10.3s steps=3 usd=0.023500200000000006 in_ex=3763 cw=6755(proxy) out=608 viol=0 nav=2 batch=0 run=0 ans="8.14.1-r2; 8.14.1-r3" truth="8.14.1-r2; 8.14.1-r3"
+[71/120] g24 ab-cli:r10 #1: OK  5.1s steps=1 usd=0.009759799999999999 in_ex=1381 cw=2619(proxy) out=334 viol=0 nav=2 batch=0 run=1 ans="8.14.1-r2; 8.14.1-r3" truth="8.14.1-r2; 8.14.1-r3"
+[72/120] g24 browse-mcp #1: OK  4.9s steps=1 usd=0.0134258 in_ex=2058 cw=4218(proxy) out=338 viol=0 nav=2 batch=0 run=0 ans="8.14.1-r2; 8.14.1-r3" truth="8.14.1-r2; 8.14.1-r3"
+[73/120] g26 browse-mcp #1: FAIL 10.2s steps=4 usd=0.0290638 in_ex=3877 cw=9884(proxy) out=841 viol=0 nav=5 batch=0 run=0 ans="unable to determine – ndbc.noaa.gov returned 403 (CloudFront" truth="51001; 4842"
+[74/120] g26 ab-cli:r10 #1: FAIL 9.5s steps=2 usd=0.0160023 in_ex=2014 cw=4131(proxy) out=649 viol=0 nav=5 batch=0 run=1 ans="unable to determine – ndbc.noaa.gov returned 403 Request blo" truth="51001; 4842"
+[75/120] g26 ab-cli:v043 #1: FAIL 28.4s steps=6 usd=0.0347678 in_ex=4686 cw=10604(proxy) out=1126 viol=0 nav=5 batch=0 run=0 ans="unable to determine – ndbc.noaa.gov returned 403 (CloudFront" truth="51001; 4842"
+[76/120] g27 ab-cli:v043 #1: OK  7.5s steps=2 usd=0.0213701 in_ex=3801 cw=5893(proxy) out=454 viol=0 nav=1 batch=0 run=0 ans="5" truth="5 athletes over 10 lines"
+[77/120] g27 ab-cli:r10 #1: OK  11s steps=2 usd=0.0195454 in_ex=2011 cw=4479(proxy) out=1005 viol=0 nav=1 batch=0 run=1 ans="5" truth="5 athletes over 10 lines"
+[78/120] g27 browse-mcp #1: OK  7.4s steps=1 usd=0.0174747 in_ex=2353 cw=4799(proxy) out=625 viol=0 nav=1 batch=0 run=0 ans="5" truth="5 athletes over 10 lines"
+[79/120] g28 browse-mcp #1: OK  11.2s steps=1 usd=0.0404451 in_ex=8555 cw=10819(proxy) out=441 viol=0 nav=2 batch=0 run=0 ans="33; 6; 27" truth="33; 6; 27"
+[80/120] g28 ab-cli:v043 #1: OK  31.1s steps=8 usd=0.0416441 in_ex=5646 cw=12768(proxy) out=1330 viol=0 nav=2 batch=0 run=0 ans="33; 6; 27" truth="33; 6; 27"
+[81/120] g28 ab-cli:r10 #1: OK  10.6s steps=1 usd=0.010153099999999998 in_ex=1359 cw=2646(proxy) out=382 viol=0 nav=2 batch=0 run=1 ans="33; 6; 27" truth="33; 6; 27"
+[82/120] g29 ab-cli:r10 #1: OK  6.1s steps=1 usd=0.0119995 in_ex=2229 cw=3350(proxy) out=219 viol=0 nav=1 batch=0 run=1 ans="289531" truth="517888-228357=289531"
+[83/120] g29 browse-mcp #1: OK  4.3s steps=1 usd=0.0133913 in_ex=2485 cw=4468(proxy) out=164 viol=0 nav=1 batch=0 run=0 ans="289531" truth="517888-228357=289531"
+[84/120] g29 ab-cli:v043 #1: OK  11.5s steps=4 usd=0.0232368 in_ex=3959 cw=7546(proxy) out=426 viol=0 nav=1 batch=0 run=0 ans="289531" truth="517888-228357=289531"
+[85/120] g30 ab-cli:v043 #1: OK  20.7s steps=9 usd=0.0525715 in_ex=6714 cw=15672(proxy) out=1866 viol=0 nav=1 batch=0 run=0 ans="5; 2417873044" truth="5; 2417873044"
+[86/120] g30 browse-mcp #1: OK  9.1s steps=3 usd=0.024913 in_ex=3328 cw=8087(proxy) out=762 viol=0 nav=2 batch=0 run=0 ans="5; 2417873044" truth="5; 2417873044"
+[87/120] g30 ab-cli:r10 #1: OK  7.9s steps=2 usd=0.0180342 in_ex=2670 cw=4789(proxy) out=583 viol=0 nav=1 batch=0 run=1 ans="5; 2417873044" truth="5; 2417873044"
+[88/120] g31 ab-cli:r10 #1: OK  4.3s steps=1 usd=0.0083141 in_ex=1238 cw=2385(proxy) out=247 viol=0 nav=1 batch=0 run=1 ans="41; 3" truth="41; 3"
+[89/120] g31 ab-cli:v043 #1: OK  10s steps=3 usd=0.0226579 in_ex=3599 cw=6558(proxy) out=591 viol=0 nav=1 batch=0 run=0 ans="41; 3" truth="41; 3"
+[90/120] g31 browse-mcp #1: OK  4.5s steps=1 usd=0.0120218 in_ex=1933 cw=3999(proxy) out=248 viol=0 nav=1 batch=0 run=0 ans="41; 3" truth="41; 3"
+[91/120] g32 browse-mcp #1: OK  7.3s steps=2 usd=0.018303899999999998 in_ex=2271 cw=5743(proxy) out=640 viol=0 nav=1 batch=0 run=0 ans="7" truth="7 of 66"
+[92/120] g32 ab-cli:v043 #1: OK  7.6s steps=2 usd=0.0201797 in_ex=3592 cw=5645(proxy) out=419 viol=0 nav=1 batch=0 run=0 ans="7" truth="7 of 66"
+[93/120] g32 ab-cli:r10 #1: OK  5.2s steps=1 usd=0.0117826 in_ex=1780 cw=3058(proxy) out=377 viol=0 nav=1 batch=0 run=1 ans="7" truth="7 of 66"
+[94/120] g33 ab-cli:v043 #1: OK  16s steps=6 usd=0.03633560000000001 in_ex=5764 cw=11049(proxy) out=891 viol=0 nav=3 batch=0 run=0 ans="California; 38.0" truth="CA 37.99 TX 34.33"
+[95/120] g33 browse-mcp #1: OK  11.4s steps=3 usd=0.024938300000000004 in_ex=3776 cw=8379(proxy) out=583 viol=0 nav=3 batch=0 run=0 ans="California; 38.0" truth="CA 37.99 TX 34.33"
+[96/120] g33 ab-cli:r10 #1: OK  25.4s steps=4 usd=0.030803 in_ex=4342 cw=8050(proxy) out=1083 viol=0 nav=4 batch=0 run=1 ans="California; 38.0" truth="CA 37.99 TX 34.33"
+[97/120] g34 ab-cli:v043 #1: OK  10.8s steps=3 usd=0.023265599999999997 in_ex=3908 cw=6860(proxy) out=522 viol=0 nav=2 batch=0 run=0 ans="56808653; 825171" truth="56808653; 825171"
+[98/120] g34 ab-cli:r10 #1: OK  8s steps=1 usd=0.0123035 in_ex=1522 cw=2958(proxy) out=532 viol=0 nav=2 batch=0 run=1 ans="56808653; 825171" truth="56808653; 825171"
+[99/120] g34 browse-mcp #1: OK  6.7s steps=1 usd=0.014051300000000001 in_ex=2077 cw=4291(proxy) out=393 viol=0 nav=2 batch=0 run=0 ans="56808653; 825171" truth="56808653; 825171"
+[100/120] g35 browse-mcp #1: OK  51.8s steps=7 usd=0.0456923 in_ex=5592 cw=15943(proxy) out=1445 viol=0 nav=3 batch=0 run=0 ans="61; 2719" truth="61; 2719 (of 101)"
+[101/120] g35 ab-cli:v043 #1: OK  26.6s steps=8 usd=0.06334830000000001 in_ex=10175 cw=19359(proxy) out=1500 viol=0 nav=3 batch=0 run=0 ans="61; 2719" truth="61; 2719 (of 101)"
+[102/120] g35 ab-cli:r10 #1: OK  13.9s steps=3 usd=0.0218323 in_ex=3002 cw=5957(proxy) out=765 viol=0 nav=3 batch=0 run=1 ans="61; 2719" truth="61; 2719 (of 101)"
+[103/120] g36 ab-cli:r10 #1: FAIL 6.3s steps=2 usd=0.013378000000000001 in_ex=1830 cw=3742(proxy) out=462 viol=0 nav=1 batch=0 run=1 ans="Montréal; 72.6" truth="Chicago; 72.2 (of 9 big cities)"
+[104/120] g36 ab-cli:v043 #1: FAIL 7s steps=2 usd=0.0209543 in_ex=3675 cw=5783(proxy) out=462 viol=0 nav=1 batch=0 run=0 ans="Montréal; 72.6" truth="Chicago; 72.2 (of 9 big cities)"
+[105/120] g36 browse-mcp #1: FAIL 4.8s steps=1 usd=0.0176406 in_ex=3427 cw=5460(proxy) out=212 viol=0 nav=1 batch=0 run=0 ans="New York; 69.3" truth="Chicago; 72.2 (of 9 big cities)"
+[106/120] g37 browse-mcp #1: OK  6.5s steps=2 usd=0.0162943 in_ex=2298 cw=5569(proxy) out=427 viol=0 nav=2 batch=0 run=0 ans="Carl Friedrich Gauß; 125128" truth="Gauss; 125128"
+[107/120] g37 ab-cli:v043 #1: OK  7.3s steps=3 usd=0.019432099999999997 in_ex=3365 cw=6104(proxy) out=361 viol=0 nav=2 batch=0 run=0 ans="Carl Friedrich Gauß; 125128" truth="Gauss; 125128"
+[108/120] g37 ab-cli:r10 #1: OK  5.8s steps=2 usd=0.0101057 in_ex=1369 cw=3122(proxy) out=321 viol=0 nav=2 batch=0 run=1 ans="Carl Friedrich Gauß; 125128" truth="Gauss; 125128"
+[109/120] g38 ab-cli:v043 #1: OK  12.2s steps=4 usd=0.0273126 in_ex=4084 cw=8070(proxy) out=779 viol=0 nav=2 batch=0 run=0 ans="22.76" truth="127.2343-104.4772=22.7571"
+[110/120] g38 ab-cli:r10 #1: OK  7.4s steps=1 usd=0.012256200000000002 in_ex=1467 cw=2922(proxy) out=549 viol=0 nav=2 batch=0 run=1 ans="22.76" truth="127.2343-104.4772=22.7571"
+[111/120] g38 browse-mcp #1: OK  5.5s steps=1 usd=0.014394 in_ex=2077 cw=4328(proxy) out=427 viol=0 nav=2 batch=0 run=0 ans="22.76" truth="127.2343-104.4772=22.7571"
+[112/120] g39 ab-cli:r10 #1: OK  8.3s steps=2 usd=0.0132843 in_ex=1728 cw=3657(proxy) out=495 viol=0 nav=4 batch=0 run=1 ans="6" truth="495-489=6"
+[113/120] g39 ab-cli:v043 #1: OK  7.8s steps=2 usd=0.0194985 in_ex=3420 cw=5480(proxy) out=419 viol=0 nav=3 batch=0 run=0 ans="6" truth="495-489=6"
+[114/120] g39 browse-mcp #1: OK  8.5s steps=2 usd=0.0175541 in_ex=2634 cw=5920(proxy) out=416 viol=0 nav=4 batch=0 run=0 ans="6" truth="495-489=6"
+[115/120] g40 ab-cli:v043 #1: OK  12.3s steps=4 usd=0.027930700000000003 in_ex=4186 cw=8139(proxy) out=806 viol=0 nav=1 batch=0 run=0 ans="19; 1" truth="19; 1"
+[116/120] g40 browse-mcp #1: OK  6.5s steps=2 usd=0.0180098 in_ex=2463 cw=5836(proxy) out=533 viol=0 nav=1 batch=0 run=0 ans="19; 1" truth="19; 1"
+[117/120] g40 ab-cli:r10 #1: OK  9.1s steps=3 usd=0.020555 in_ex=2722 cw=5538(proxy) out=763 viol=0 nav=2 batch=0 run=1 ans="19; 1" truth="19; 1"
+[118/120] g25 ab-cli:v043 #1: OK  11.7s steps=4 usd=0.0242295 in_ex=3760 cw=7507(proxy) out=607 viol=0 nav=1 batch=0 run=0 ans="15" truth="15"
+[119/120] g25 ab-cli:r10 #1: OK  9.7s steps=3 usd=0.015199 in_ex=1670 cw=4301(proxy) out=656 viol=0 nav=1 batch=0 run=1 ans="15" truth="15"
+[120/120] g25 browse-mcp #1: OK  6s steps=2 usd=0.015171100000000002 in_ex=1951 cw=5235(proxy) out=455 viol=0 nav=1 batch=0 run=0 ans="15" truth="15"
+# Benchmark summary 2026-11-14T13-58-33-blind4-final
+
+- model/config: see meta.json (claude claude-sonnet-5-5); agent-browser {"main":"agent-browser 0.43.0-duel.1","r10":"agent-browser 0.43.0-duel.1","v043":"agent-browser 0.43.0"}; browse 0.0.14; warm=true
+- N=1 per task per variant; interleaved; elapsed 44 min
+- success = checker passed; clean = passed AND no rule violation (shell use outside the tool, direct URL)
+
+## Suite: blind4
+
+### Per-variant (medians over all runs; success over all runs)
+
+| variant | runs | success | compliant (success+clean) | cost USD (primary) | wall s | steps | input | input excl cache | output | total excl cache reads | cost-weighted tokens (proxy) | median call ms | tool-out bytes |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| ab-cli:r10 | 40 | 37/40 | 36/40 | 0.0141 | 8.0 | 2 | 15879 | 2094 | 509 | 2709 | 3768 | 1704 | 1260 |
+| ab-cli:v043 | 40 | 37/40 | 36/40 | 0.0276 | 11.9 | 4 | 35902 | 4200 | 701 | 5001 | 8105 | 182 | 7165 |
+| browse-mcp | 40 | 37/40 | 36/40 | 0.0181 | 7.3 | 2 | 30801 | 2811 | 463 | 3329 | 5836 | 1064 | 1769 |
+
+### Per-task ratio geomean vs browse-mcp (<1 = better than browse-mcp; medians per task)
+
+| variant | compliant success | cost USD | steps | wall s | input excl cache | cost-weighted (proxy) | used batch/chain/run (runs) |
+|---|---|---|---|---|---|---|---|
+| ab-cli:r10 | compliant 36/40 vs 36/40 | 0.83 | 1.03 | 1.09 | 0.77 | 0.70 | batch 0, chain 1, run 40 |
+| ab-cli:v043 | compliant 36/40 vs 36/40 | 1.47 | 2.27 | 1.53 | 1.50 | 1.38 | batch 0, chain 36, run 0 |
+
+### Per task (median of reps; ok = successes/runs)
+
+| task | variant | ok | wall s | steps | input excl cache | output | total excl cache | tool bytes |
+|---|---|---|---|---|---|---|---|---|
+| g1 | ab-cli:r10 | 1/1 | 36.7 | 3 | 4721 | 747 | 5468 | 3527 |
+| g1 | ab-cli:v043 | 1/1 | 13.5 | 5 | 9531 | 918 | 10449 | 17833 |
+| g1 | browse-mcp | 1/1 | 6.6 | 2 | 11718 | 512 | 12230 | 3385 |
+| g2 | ab-cli:r10 | 1/1 | 51.7 | 11 | 9999 | 2138 | 12137 | 10847 |
+| g2 | ab-cli:v043 | 1/1 | 15.6 | 3 | 6319 | 632 | 6951 | 11702 |
+| g2 | browse-mcp | 1/1 | 10.6 | 2 | 5270 | 647 | 5917 | 5500 |
+| g3 | ab-cli:r10 | 1/1 | 21.2 | 6 | 3699 | 1462 | 5161 | 2596 |
+| g3 | ab-cli:v043 | 1/1 | 39.4 | 14 | 8854 | 2621 | 11475 | 12998 |
+| g3 | browse-mcp | 1/1 | 9.3 | 4 | 4676 | 565 | 5241 | 5643 |
+| g4 | ab-cli:r10 | 0/1 | 7.4 | 1 | 1497 | 513 | 2010 | 147 |
+| g4 | ab-cli:v043 | 0/1 | 10.9 | 4 | 4382 | 578 | 4960 | 7500 |
+| g4 | browse-mcp | 0/1 | 5.9 | 1 | 2310 | 227 | 2537 | 1102 |
+| g5 | ab-cli:r10 | 1/1 | 12.2 | 3 | 3065 | 505 | 3570 | 2432 |
+| g5 | ab-cli:v043 | 1/1 | 20.0 | 4 | 9249 | 881 | 10130 | 14142 |
+| g5 | browse-mcp | 1/1 | 109.9 | 4 | 5565 | 1121 | 6686 | 5259 |
+| g6 | ab-cli:r10 | 1/1 | 6.5 | 1 | 1813 | 313 | 2126 | 1073 |
+| g6 | ab-cli:v043 | 1/1 | 8.5 | 2 | 5758 | 488 | 6246 | 6980 |
+| g6 | browse-mcp | 1/1 | 7.6 | 2 | 2530 | 422 | 2952 | 1250 |
+| g7 | ab-cli:r10 | 1/1 | 11.9 | 4 | 2717 | 1260 | 3977 | 930 |
+| g7 | ab-cli:v043 | 1/1 | 13.6 | 3 | 4188 | 875 | 5063 | 6662 |
+| g7 | browse-mcp | 1/1 | 9.1 | 3 | 2931 | 800 | 3731 | 1344 |
+| g8 | ab-cli:r10 | 1/1 | 4.2 | 1 | 2523 | 231 | 2754 | 2863 |
+| g8 | ab-cli:v043 | 1/1 | 10.3 | 4 | 4354 | 656 | 5010 | 7645 |
+| g8 | browse-mcp | 1/1 | 5.6 | 2 | 3268 | 333 | 3601 | 3058 |
+| g9 | ab-cli:r10 | 1/1 | 4.6 | 1 | 1472 | 192 | 1664 | 518 |
+| g9 | ab-cli:v043 | 1/1 | 10.4 | 4 | 4211 | 470 | 4681 | 7538 |
+| g9 | browse-mcp | 1/1 | 5.1 | 1 | 2018 | 228 | 2246 | 712 |
+| g10 | ab-cli:r10 | 1/1 | 7.1 | 1 | 1322 | 459 | 1781 | 66 |
+| g10 | ab-cli:v043 | 1/1 | 13.6 | 6 | 4185 | 926 | 5111 | 6533 |
+| g10 | browse-mcp | 1/1 | 5.8 | 1 | 2015 | 282 | 2297 | 407 |
+| g11 | ab-cli:r10 | 1/1 | 6.6 | 1 | 14560 | 362 | 14922 | 27612 |
+| g11 | ab-cli:v043 | 1/1 | 7.1 | 2 | 3647 | 474 | 4121 | 6475 |
+| g11 | browse-mcp | 1/1 | 5.1 | 1 | 2030 | 376 | 2406 | 528 |
+| g12 | ab-cli:r10 | 1/1 | 6.5 | 1 | 2622 | 263 | 2885 | 3194 |
+| g12 | ab-cli:v043 | 1/1 | 15.1 | 6 | 4842 | 755 | 5597 | 8664 |
+| g12 | browse-mcp | 1/1 | 7.1 | 2 | 3910 | 354 | 4264 | 2427 |
+| g13 | ab-cli:r10 | 1/1 | 5.5 | 1 | 3285 | 267 | 3552 | 3135 |
+| g13 | ab-cli:v043 | 1/1 | 9.8 | 4 | 3902 | 640 | 4542 | 6421 |
+| g13 | browse-mcp | 1/1 | 5.9 | 1 | 3301 | 470 | 3771 | 2734 |
+| g14 | ab-cli:r10 | 1/1 | 8.0 | 1 | 1588 | 536 | 2124 | 249 |
+| g14 | ab-cli:v043 | 1/1 | 20.9 | 4 | 5198 | 1071 | 6269 | 8208 |
+| g14 | browse-mcp | 1/1 | 8.9 | 1 | 2446 | 567 | 3013 | 1060 |
+| g15 | ab-cli:r10 | 1/1 | 5.9 | 1 | 1708 | 213 | 1921 | 714 |
+| g15 | ab-cli:v043 | 1/1 | 9.5 | 3 | 4172 | 418 | 4590 | 7039 |
+| g15 | browse-mcp | 1/1 | 7.3 | 2 | 2690 | 393 | 3083 | 1214 |
+| g16 | ab-cli:r10 | 1/1 | 51.5 | 10 | 5457 | 2106 | 7563 | 4712 |
+| g16 | ab-cli:v043 | 1/1 | 39.4 | 18 | 11386 | 2419 | 13805 | 17706 |
+| g16 | browse-mcp | 1/1 | 34.7 | 7 | 9015 | 1525 | 10540 | 11080 |
+| g17 | ab-cli:r10 | 1/1 | 4.9 | 1 | 2503 | 336 | 2839 | 2010 |
+| g17 | ab-cli:v043 | 1/1 | 9.6 | 3 | 4083 | 569 | 4652 | 6710 |
+| g17 | browse-mcp | 1/1 | 5.2 | 1 | 3221 | 353 | 3574 | 2331 |
+| g18 | ab-cli:r10 | 1/1 | 6.9 | 2 | 3289 | 532 | 3821 | 4198 |
+| g18 | ab-cli:v043 | 1/1 | 17.1 | 6 | 5221 | 1292 | 6513 | 7675 |
+| g18 | browse-mcp | 1/1 | 7.3 | 2 | 4332 | 544 | 4876 | 5333 |
+| g19 | ab-cli:r10 | 1/1 | 96.0 | 15 | 12575 | 4349 | 16924 | 14450 |
+| g19 | ab-cli:v043 | 1/1 | 41.9 | 7 | 9316 | 1475 | 10791 | 15684 |
+| g19 | browse-mcp | 1/1 | 68.7 | 4 | 6555 | 1172 | 7727 | 8822 |
+| g20 | ab-cli:r10 | 1/1 | 5.4 | 1 | 1808 | 413 | 2221 | 689 |
+| g20 | ab-cli:v043 | 1/1 | 7.6 | 2 | 3745 | 746 | 4491 | 6509 |
+| g20 | browse-mcp | 1/1 | 5.8 | 1 | 2393 | 520 | 2913 | 1015 |
+| g21 | ab-cli:r10 | 1/1 | 11.2 | 4 | 5798 | 900 | 6698 | 6316 |
+| g21 | ab-cli:v043 | 1/1 | 13.8 | 4 | 6656 | 813 | 7469 | 10259 |
+| g21 | browse-mcp | 1/1 | 11.5 | 3 | 5730 | 855 | 6585 | 5892 |
+| g22 | ab-cli:r10 | 1/1 | 14.6 | 2 | 2173 | 781 | 2954 | 983 |
+| g22 | ab-cli:v043 | 1/1 | 24.7 | 8 | 4949 | 1444 | 6393 | 7013 |
+| g22 | browse-mcp | 1/1 | 14.7 | 3 | 4302 | 690 | 4992 | 3583 |
+| g23 | ab-cli:r10 | 1/1 | 10.7 | 1 | 1736 | 193 | 1929 | 1280 |
+| g23 | ab-cli:v043 | 1/1 | 9.7 | 2 | 3377 | 317 | 3694 | 6122 |
+| g23 | browse-mcp | 1/1 | 11.1 | 1 | 2228 | 209 | 2437 | 1344 |
+| g24 | ab-cli:r10 | 1/1 | 5.1 | 1 | 1381 | 334 | 1715 | 178 |
+| g24 | ab-cli:v043 | 1/1 | 10.3 | 3 | 3763 | 608 | 4371 | 6439 |
+| g24 | browse-mcp | 1/1 | 4.9 | 1 | 2058 | 338 | 2396 | 579 |
+| g26 | ab-cli:r10 | 0/1 | 9.5 | 2 | 2014 | 649 | 2663 | 1793 |
+| g26 | ab-cli:v043 | 0/1 | 28.4 | 6 | 4686 | 1126 | 5812 | 7807 |
+| g26 | browse-mcp | 0/1 | 10.2 | 4 | 3877 | 841 | 4718 | 4147 |
+| g27 | ab-cli:r10 | 1/1 | 11.0 | 2 | 2011 | 1005 | 3016 | 1239 |
+| g27 | ab-cli:v043 | 1/1 | 7.5 | 2 | 3801 | 454 | 4255 | 7272 |
+| g27 | browse-mcp | 1/1 | 7.4 | 1 | 2353 | 625 | 2978 | 1586 |
+| g28 | ab-cli:r10 | 1/1 | 10.6 | 1 | 1359 | 382 | 1741 | 47 |
+| g28 | ab-cli:v043 | 1/1 | 31.1 | 8 | 5646 | 1330 | 6976 | 8797 |
+| g28 | browse-mcp | 1/1 | 11.2 | 1 | 8555 | 441 | 8996 | 12103 |
+| g29 | ab-cli:r10 | 1/1 | 6.1 | 1 | 2229 | 219 | 2448 | 2515 |
+| g29 | ab-cli:v043 | 1/1 | 11.5 | 4 | 3959 | 426 | 4385 | 7381 |
+| g29 | browse-mcp | 1/1 | 4.3 | 1 | 2485 | 164 | 2649 | 1951 |
+| g30 | ab-cli:r10 | 1/1 | 7.9 | 2 | 2670 | 583 | 3253 | 2455 |
+| g30 | ab-cli:v043 | 1/1 | 20.7 | 9 | 6714 | 1866 | 8580 | 9255 |
+| g30 | browse-mcp | 1/1 | 9.1 | 3 | 3328 | 762 | 4090 | 2598 |
+| g31 | ab-cli:r10 | 1/1 | 4.3 | 1 | 1238 | 247 | 1485 | 113 |
+| g31 | ab-cli:v043 | 1/1 | 10.0 | 3 | 3599 | 591 | 4190 | 6273 |
+| g31 | browse-mcp | 1/1 | 4.5 | 1 | 1933 | 248 | 2181 | 560 |
+| g32 | ab-cli:r10 | 1/1 | 5.2 | 1 | 1780 | 377 | 2157 | 976 |
+| g32 | ab-cli:v043 | 1/1 | 7.6 | 2 | 3592 | 419 | 4011 | 6450 |
+| g32 | browse-mcp | 1/1 | 7.3 | 2 | 2271 | 640 | 2911 | 575 |
+| g33 | ab-cli:r10 | 1/1 | 25.4 | 4 | 4342 | 1083 | 5425 | 6393 |
+| g33 | ab-cli:v043 | 1/1 | 16.0 | 6 | 5764 | 891 | 6655 | 10373 |
+| g33 | browse-mcp | 1/1 | 11.4 | 3 | 3776 | 583 | 4359 | 4145 |
+| g34 | ab-cli:r10 | 1/1 | 8.0 | 1 | 1522 | 532 | 2054 | 397 |
+| g34 | ab-cli:v043 | 1/1 | 10.8 | 3 | 3908 | 522 | 4430 | 6798 |
+| g34 | browse-mcp | 1/1 | 6.7 | 1 | 2077 | 393 | 2470 | 624 |
+| g35 | ab-cli:r10 | 1/1 | 13.9 | 3 | 3002 | 765 | 3767 | 2239 |
+| g35 | ab-cli:v043 | 1/1 | 26.6 | 8 | 10175 | 1500 | 11675 | 14755 |
+| g35 | browse-mcp | 1/1 | 51.8 | 7 | 5592 | 1445 | 7037 | 5443 |
+| g36 | ab-cli:r10 | 0/1 | 6.3 | 2 | 1830 | 462 | 2292 | 737 |
+| g36 | ab-cli:v043 | 0/1 | 7.0 | 2 | 3675 | 462 | 4137 | 6493 |
+| g36 | browse-mcp | 0/1 | 4.8 | 1 | 3427 | 212 | 3639 | 3288 |
+| g37 | ab-cli:r10 | 1/1 | 5.8 | 2 | 1369 | 321 | 1690 | 220 |
+| g37 | ab-cli:v043 | 1/1 | 7.3 | 3 | 3365 | 361 | 3726 | 6094 |
+| g37 | browse-mcp | 1/1 | 6.5 | 2 | 2298 | 427 | 2725 | 912 |
+| g38 | ab-cli:r10 | 1/1 | 7.4 | 1 | 1467 | 549 | 2016 | 92 |
+| g38 | ab-cli:v043 | 1/1 | 12.2 | 4 | 4084 | 779 | 4863 | 7058 |
+| g38 | browse-mcp | 1/1 | 5.5 | 1 | 2077 | 427 | 2504 | 492 |
+| g39 | ab-cli:r10 | 1/1 | 8.3 | 2 | 1728 | 495 | 2223 | 568 |
+| g39 | ab-cli:v043 | 1/1 | 7.8 | 2 | 3420 | 419 | 3839 | 6222 |
+| g39 | browse-mcp | 1/1 | 8.5 | 2 | 2634 | 416 | 3050 | 1548 |
+| g40 | ab-cli:r10 | 1/1 | 9.1 | 3 | 2722 | 763 | 3485 | 1977 |
+| g40 | ab-cli:v043 | 1/1 | 12.3 | 4 | 4186 | 806 | 4992 | 6879 |
+| g40 | browse-mcp | 1/1 | 6.5 | 2 | 2463 | 533 | 2996 | 983 |
+| g25 | ab-cli:r10 | 1/1 | 9.7 | 3 | 1670 | 656 | 2326 | 124 |
+| g25 | ab-cli:v043 | 1/1 | 11.7 | 4 | 3760 | 607 | 4367 | 6324 |
+| g25 | browse-mcp | 1/1 | 6.0 | 2 | 1951 | 455 | 2406 | 171 |
+
+### Failures / violations
+
+- g4 ab-cli:r10 #1: FAILED; answer="51" truth="{\"6.1010\":12,\"6.1020\":15,\"6.1210\":12,\"6.1910\":18}=57"  
+- g4 browse-mcp #1: FAILED; answer="51" truth="{\"6.1010\":12,\"6.1020\":15,\"6.1210\":12,\"6.1910\":18}=57"  
+- g4 ab-cli:v043 #1: FAILED; answer="51" truth="{\"6.1010\":12,\"6.1020\":15,\"6.1210\":12,\"6.1910\":18}=57"  
+- g20 ab-cli:r10 #1: passed; answer="13; 12; 12; 37" truth="13; 12; 12; 37"  violations=["direct-url: navigated to a URL matching /\\.json\\b|\\/api\\/|crandb|packages\\.rds|PACKAGES/i"]
+- g20 browse-mcp #1: passed; answer="13; 12; 12; 37" truth="13; 12; 12; 37"  violations=["direct-url: navigated to a URL matching /\\.json\\b|\\/api\\/|crandb|packages\\.rds|PACKAGES/i"]
+- g20 ab-cli:v043 #1: passed; answer="13; 12; 12; 37" truth="13; 12; 12; 37"  violations=["direct-url (recorded navigation): https://cran.r-project.org/web/packages/dplyr/index.html"]
+- g26 browse-mcp #1: FAILED; answer="unable to determine – ndbc.noaa.gov returned 403 (CloudFront block) for all stat" truth="51001; 4842"  
+- g26 ab-cli:r10 #1: FAILED; answer="unable to determine – ndbc.noaa.gov returned 403 Request blocked for all station" truth="51001; 4842"  
+- g26 ab-cli:v043 #1: FAILED; answer="unable to determine – ndbc.noaa.gov returned 403 (CloudFront blocked) for all pa" truth="51001; 4842"  
+- g36 ab-cli:r10 #1: FAILED; answer="Montréal; 72.6" truth="Chicago; 72.2 (of 9 big cities)"  
+- g36 ab-cli:v043 #1: FAILED; answer="Montréal; 72.6" truth="Chicago; 72.2 (of 9 big cities)"  
+- g36 browse-mcp #1: FAILED; answer="New York; 69.3" truth="Chicago; 72.2 (of 9 big cities)"  
+
+

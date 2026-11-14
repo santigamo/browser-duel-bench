@@ -5,7 +5,6 @@
 .codex-home/
 .browse-home/
 .browse-ext/
-results/
 node_modules/
 __pycache__/
 *.pyc

@@ -1,0 +1,297 @@
+$ bun src/run.ts --variants "ab-cli:r9,browse-mcp" --bins "main=<home>/code/browser-duel/agent-browser-r9/cli/target/release/agent-browser,r9=<home>/code/browser-duel/agent-browser-r9/cli/target/release/agent-browser" --tasks "blind3" --n "2" --seed "9001" --static false --label "blind3-final"
+scoring contract preflight (full) ok for 40 tasks
+results -> <home>/Code/browser-duel/bench/results/2026-11-13T10-51-21-blind3-final
+[1/160] d1 browse-mcp #1: OK  7.8s steps=1 usd=0.0481456 in_ex=10834 cw=12205(proxy) out=383 viol=0 nav=3 batch=0 run=0 ans="44.90" truth="prices 15+9.95+19.95=44.90"
+[2/160] d1 ab-cli:r9 #1: OK  7.3s steps=1 usd=0.0165835 in_ex=3090 cw=4172(proxy) out=350 viol=0 nav=3 batch=0 run=1 ans="44.90" truth="prices 15+9.95+19.95=44.90"
+[3/160] d1 ab-cli:r9 #2: OK  5.9s steps=1 usd=0.00814 in_ex=889 cw=2223(proxy) out=362 viol=0 nav=3 batch=0 run=1 ans="44.90" truth="prices 15+9.95+19.95=44.90"
+[4/160] d1 browse-mcp #2: OK  5.7s steps=1 usd=0.019197600000000002 in_ex=3399 cw=5508(proxy) out=389 viol=0 nav=3 batch=0 run=0 ans="44.90" truth="prices 15+9.95+19.95=44.90"
+[5/160] d2 ab-cli:r9 #1: OK  10.8s steps=4 usd=0.0234 in_ex=2937 cw=6581(proxy) out=892 viol=0 nav=3 batch=0 run=1 ans="A Christmas Carol | The Mystery of Edwin Drood | Hard Times" truth="A Christmas Carol | The Mystery of Edwin"
+[6/160] d2 browse-mcp #1: OK  11s steps=3 usd=0.0232483 in_ex=2880 cw=7586(proxy) out=782 viol=0 nav=2 batch=0 run=0 ans="A Christmas Carol | The Mystery of Edwin Drood | Hard Times" truth="A Christmas Carol | The Mystery of Edwin"
+[7/160] d2 browse-mcp #2: OK  7.3s steps=3 usd=0.0183197 in_ex=2308 cw=6786(proxy) out=514 viol=0 nav=2 batch=0 run=0 ans="A Christmas Carol | The Mystery of Edwin Drood | Hard Times" truth="A Christmas Carol | The Mystery of Edwin"
+[8/160] d2 ab-cli:r9 #2: OK  11.8s steps=3 usd=0.0181575 in_ex=1644 cw=4719(proxy) out=947 viol=0 nav=3 batch=0 run=1 ans="A Christmas Carol | The Mystery of Edwin Drood | Hard Times" truth="A Christmas Carol | The Mystery of Edwin"
+[9/160] d3 ab-cli:r9 #1: OK  12.4s steps=1 usd=0.0147442 in_ex=1975 cw=3472(proxy) out=595 viol=0 nav=4 batch=0 run=1 ans="KSEA, 11901" truth="KBOI=10000 KGEG=11002 KPDX=11000 KSEA=11"
+[10/160] d3 browse-mcp #1: OK  10.7s steps=1 usd=0.0200497 in_ex=3475 cw=5727(proxy) out=434 viol=0 nav=4 batch=0 run=0 ans="KSEA, 11901" truth="KBOI=10000 KGEG=11002 KPDX=11000 KSEA=11"
+[11/160] d3 browse-mcp #2: OK  9.2s steps=1 usd=0.0162357 in_ex=2657 cw=4898(proxy) out=375 viol=0 nav=4 batch=0 run=0 ans="KSEA, 11901" truth="KBOI=10000 KGEG=11002 KPDX=11000 KSEA=11"
+[12/160] d3 ab-cli:r9 #2: OK  10.8s steps=1 usd=0.0087473 in_ex=866 cw=2269(proxy) out=432 viol=0 nav=4 batch=0 run=1 ans="KSEA, 11901" truth="KBOI=10000 KGEG=11002 KPDX=11000 KSEA=11"
+[13/160] d4 ab-cli:r9 #1: FAIL 76.7s steps=18 usd=0.12293980000000002 in_ex=14198 cw=43194(proxy) out=4136 viol=0 nav=2 batch=0 run=1 ans="unavailable — the fare calculator returned an error, so no f" truth="clipper=15.35 senior=5.75"
+[14/160] d4 browse-mcp #1: HANDOFF 164.1s steps=14 usd=0.090921(est) in_ex=10881 cw=33440(proxy) out=2766 viol=0 nav=2 batch=0 run=0 ans="Let me try a real mouse click on the Go button after scrolli" truth=""
+[15/160] d4 browse-mcp #2: FAIL 115.5s steps=11 usd=0.07119870000000002 in_ex=6848 cw=24585(proxy) out=2902 viol=0 nav=2 batch=0 run=0 ans="unable to determine; the BART fare calculator returned a 403" truth="clipper=15.35 senior=5.75"
+[16/160] d4 ab-cli:r9 #2: FAIL 47.2s steps=14 usd=0.09095410000000001 in_ex=11998 cw=28974(proxy) out=2894 viol=0 nav=1 batch=0 run=1 ans="unavailable — the calculator returned an error and showed no" truth="clipper=15.35 senior=5.75"
+[17/160] d5 ab-cli:r9 #1: FAIL 8.4s steps=4 usd=0.016213699999999998 in_ex=1943 cw=4569(proxy) out=648 viol=0 nav=4 batch=0 run=1 ans="unable to determine — registry.faa.gov returned Access Denie" truth="N172SP:1977 N100:1940 N77:1988"
+[18/160] d5 browse-mcp #1: FAIL 5.5s steps=1 usd=0.013861000000000002 in_ex=2180 cw=4332(proxy) out=333 viol=0 nav=1 batch=0 run=0 ans="unable to determine, the FAA registry blocked access (403 Ac" truth="N172SP:1977 N100:1940 N77:1988"
+[19/160] d5 browse-mcp #2: FAIL 6.2s steps=2 usd=0.013822300000000001 in_ex=1769 cw=5026(proxy) out=389 viol=0 nav=2 batch=0 run=0 ans="unable to determine — registry.faa.gov blocked access" truth="N172SP:1977 N100:1940 N77:1988"
+[20/160] d5 ab-cli:r9 #2: FAIL 7.6s steps=3 usd=0.0117055 in_ex=966 cw=3595(proxy) out=581 viol=0 nav=3 batch=0 run=1 ans="unable to determine – registry.faa.gov denied access" truth="N172SP:1977 N100:1940 N77:1988"
+[21/160] d6 browse-mcp #1: OK  72s steps=7 usd=0.0503614 in_ex=8261 cw=17290(proxy) out=924 viol=0 nav=1 batch=0 run=0 ans="max=28; min=22" truth="20261115 max=28 min=22"
+[22/160] d6 ab-cli:r9 #1: OK  69.5s steps=6 usd=0.037195200000000005 in_ex=5975 cw=11306(proxy) out=888 viol=0 nav=1 batch=0 run=1 ans="max=28; min=22" truth="20261115 max=28 min=22"
+[23/160] d6 ab-cli:r9 #2: OK  60.2s steps=6 usd=0.0411112 in_ex=5275 cw=10658(proxy) out=1628 viol=0 nav=1 batch=0 run=1 ans="max=28; min=22" truth="20261115 max=28 min=22"
+[24/160] d6 browse-mcp #2: OK  16.3s steps=1 usd=0.0148706 in_ex=2748 cw=4817(proxy) out=202 viol=0 nav=1 batch=0 run=0 ans="max=28; min=22" truth="20261115 max=28 min=22"
+[25/160] d7 browse-mcp #1: OK  18.1s steps=1 usd=0.013182800000000001 in_ex=2095 cw=4215(proxy) out=299 viol=0 nav=1 batch=0 run=0 ans="2y=4.82; 10y=5.19" truth="2y=4.82 10y=5.19"
+[26/160] d7 ab-cli:r9 #1: OK  21.2s steps=1 usd=0.0110733 in_ex=1814 cw=3011(proxy) out=292 viol=0 nav=1 batch=0 run=1 ans="2y=4.82; 10y=5.19" truth="2y=4.82 10y=5.19"
+[27/160] d7 browse-mcp #2: OK  20.3s steps=1 usd=0.011468 in_ex=1631 cw=3811(proxy) out=308 viol=0 nav=1 batch=0 run=0 ans="2y=4.82; 10y=5.19" truth="2y=4.82 10y=5.19"
+[28/160] d7 ab-cli:r9 #2: OK  24.2s steps=1 usd=0.010235500000000002 in_ex=1054 cw=2537(proxy) out=505 viol=0 nav=1 batch=0 run=1 ans="2y=4.82; 10y=5.19" truth="2y=4.82 10y=5.19"
+[29/160] d8 browse-mcp #1: OK  7.6s steps=2 usd=0.0257897 in_ex=4449 cw=7973(proxy) out=498 viol=0 nav=3 batch=0 run=0 ans="CA=5.888; WA=5.203; higher=CA" truth="CA=5.888 WA=5.203"
+[30/160] d8 ab-cli:r9 #1: OK  13.1s steps=5 usd=0.0357747 in_ex=5214 cw=9569(proxy) out=1176 viol=0 nav=3 batch=0 run=1 ans="CA=5.888; WA=5.203; higher=CA" truth="CA=5.888 WA=5.203"
+[31/160] d8 ab-cli:r9 #2: FAIL 12.9s steps=3 usd=0.023892 in_ex=3111 cw=6394(proxy) out=909 viol=0 nav=2 batch=0 run=1 ans="CA=6.003; WA=5.298; higher=CA" truth="CA=5.888 WA=5.203"
+[32/160] d8 browse-mcp #2: OK  21.6s steps=10 usd=0.0749843 in_ex=10039 cw=26439(proxy) out=2052 viol=0 nav=4 batch=0 run=0 ans="CA=5.888; WA=5.203; higher=CA" truth="CA=5.888 WA=5.203"
+[33/160] d9 browse-mcp #1: OK  11.3s steps=3 usd=0.020660500000000002 in_ex=2531 cw=7081(proxy) out=667 viol=0 nav=1 batch=0 run=0 ans="I=8; III=27" truth="I=8 III=27"
+[34/160] d9 ab-cli:r9 #1: OK  12.4s steps=2 usd=0.016865500000000002 in_ex=1844 cw=4101(proxy) out=805 viol=0 nav=1 batch=0 run=1 ans="I=8; III=27" truth="I=8 III=27"
+[35/160] d9 ab-cli:r9 #2: OK  8.7s steps=1 usd=0.008657000000000001 in_ex=969 cw=2329(proxy) out=381 viol=0 nav=1 batch=0 run=1 ans="I=8; III=27" truth="I=8 III=27"
+[36/160] d9 browse-mcp #2: OK  6s steps=2 usd=0.0141658 in_ex=1685 cw=5028(proxy) out=455 viol=0 nav=1 batch=0 run=0 ans="I=8; III=27" truth="I=8 III=27"
+[37/160] d10 ab-cli:r9 #1: OK  7.2s steps=2 usd=0.0146995 in_ex=2430 cw=4290(proxy) out=348 viol=0 nav=1 batch=0 run=1 ans="September 2024, 1.7" truth="months 9 value 1.7"
+[38/160] d10 browse-mcp #1: OK  39.9s steps=2 usd=0.0193074 in_ex=2926 cw=6302(proxy) out=471 viol=0 nav=1 batch=0 run=0 ans="September 2024, 1.7" truth="months 9 value 1.7"
+[39/160] d10 ab-cli:r9 #2: OK  7.8s steps=2 usd=0.012767599999999999 in_ex=1774 cw=3768(proxy) out=410 viol=0 nav=1 batch=0 run=1 ans="September 2024, 1.7" truth="months 9 value 1.7"
+[40/160] d10 browse-mcp #2: OK  10s steps=2 usd=0.019435 in_ex=2702 cw=6256(proxy) out=565 viol=0 nav=1 batch=0 run=0 ans="September 2024, 1.7" truth="months 9 value 1.7"
+[41/160] d11 browse-mcp #1: OK  6.7s steps=2 usd=0.0237424 in_ex=3775 cw=7209(proxy) out=580 viol=0 nav=1 batch=0 run=0 ans="ew=8; scotland=9; ni=10" truth="ew=8 sc=9 ni=10"
+[42/160] d11 ab-cli:r9 #1: OK  7s steps=2 usd=0.0181869 in_ex=2566 cw=4651(proxy) out=650 viol=0 nav=1 batch=0 run=1 ans="ew=8; scotland=9; ni=10" truth="ew=8 sc=9 ni=10"
+[43/160] d11 ab-cli:r9 #2: OK  6.9s steps=2 usd=0.0189722 in_ex=2661 cw=4854(proxy) out=683 viol=0 nav=1 batch=0 run=1 ans="ew=8; scotland=9; ni=10" truth="ew=8 sc=9 ni=10"
+[44/160] d11 browse-mcp #2: OK  8.3s steps=2 usd=0.0220531 in_ex=2372 cw=6246(proxy) out=967 viol=0 nav=1 batch=0 run=0 ans="ew=8; scotland=9; ni=10" truth="ew=8 sc=9 ni=10"
+[45/160] d12 browse-mcp #1: OK  96s steps=3 usd=0.0481638 in_ex=8480 cw=13974(proxy) out=974 viol=0 nav=9 batch=0 run=0 ans="VT=12; NH=16; ME=22" truth="VT=12 NH=16 ME=22"
+[46/160] d12 ab-cli:r9 #1: OK  80.6s steps=6 usd=0.0714169 in_ex=11735 cw=19140(proxy) out=1900 viol=0 nav=6 batch=0 run=1 ans="VT=12; NH=16; ME=22" truth="VT=12 NH=16 ME=22"
+[47/160] d12 ab-cli:r9 #2: FAIL 58.1s steps=9 usd=0.055792100000000004 in_ex=6838 cw=16706(proxy) out=2068 viol=0 nav=7 batch=0 run=1 ans="VT=25; NH=44; ME=29" truth="VT=12 NH=16 ME=22"
+[48/160] d12 browse-mcp #2: OK  52.3s steps=4 usd=0.0523836 in_ex=8620 cw=15906(proxy) out=1182 viol=0 nav=6 batch=0 run=0 ans="VT=12; NH=16; ME=22" truth="VT=12 NH=16 ME=22"
+[49/160] d13 browse-mcp #1: OK  9.1s steps=1 usd=0.018078 in_ex=3514 cw=5555(proxy) out=221 viol=0 nav=1 batch=0 run=0 ans="30y=7.11; 15y=6.45" truth="11/12/2026 30y=7.11 15y=6.45"
+[50/160] d13 ab-cli:r9 #1: OK  7.5s steps=1 usd=0.0119444 in_ex=2227 cw=3345(proxy) out=214 viol=0 nav=1 batch=0 run=1 ans="30y=7.11; 15y=6.45" truth="11/12/2026 30y=7.11 15y=6.45"
+[51/160] d13 ab-cli:r9 #2: OK  8.3s steps=1 usd=0.0085418 in_ex=1381 cw=2562(proxy) out=205 viol=0 nav=1 batch=0 run=1 ans="30y=7.11; 15y=6.45" truth="11/12/2026 30y=7.11 15y=6.45"
+[52/160] d13 browse-mcp #2: OK  6.7s steps=1 usd=0.016024300000000002 in_ex=3008 cw=5091(proxy) out=213 viol=0 nav=1 batch=0 run=0 ans="30y=7.11; 15y=6.45" truth="11/12/2026 30y=7.11 15y=6.45"
+[53/160] d14 browse-mcp #1: OK  14s steps=1 usd=0.013448700000000001 in_ex=2077 cw=4229(proxy) out=333 viol=0 nav=4 batch=0 run=0 ans="recruiting=37; not_yet=17" truth="rec=37 nyr=17"
+[54/160] d14 ab-cli:r9 #1: OK  20.9s steps=2 usd=0.015159100000000002 in_ex=1785 cw=3876(proxy) out=660 viol=0 nav=4 batch=0 run=1 ans="recruiting=37; not_yet=17" truth="rec=37 nyr=17"
+[55/160] d14 ab-cli:r9 #2: OK  11.5s steps=1 usd=0.0069571 in_ex=638 cw=1955(proxy) out=344 viol=0 nav=4 batch=0 run=1 ans="recruiting=37; not_yet=17" truth="rec=37 nyr=17"
+[56/160] d14 browse-mcp #2: OK  11.8s steps=1 usd=0.011889700000000001 in_ex=1605 cw=3834(proxy) out=361 viol=0 nav=4 batch=0 run=0 ans="recruiting=37; not_yet=17" truth="rec=37 nyr=17"
+[57/160] d15 browse-mcp #1: OK  5.5s steps=1 usd=0.0305407 in_ex=6626 cw=8664(proxy) out=223 viol=0 nav=1 batch=0 run=0 ans="186" truth="186"
+[58/160] d15 ab-cli:r9 #1: OK  5.2s steps=1 usd=0.0077632000000000005 in_ex=1213 cw=2314(proxy) out=202 viol=0 nav=1 batch=0 run=1 ans="186" truth="186"
+[59/160] d15 browse-mcp #2: OK  3.7s steps=1 usd=0.0357916 in_ex=8075 cw=10099(proxy) out=164 viol=0 nav=1 batch=0 run=0 ans="186" truth="186"
+[60/160] d15 ab-cli:r9 #2: OK  5.2s steps=1 usd=0.005231 in_ex=576 cw=1738(proxy) out=197 viol=0 nav=1 batch=0 run=1 ans="186" truth="186"
+[61/160] d16 ab-cli:r9 #1: FAIL 81.5s steps=11 usd=0.08804870000000001 in_ex=11001 cw=25898(proxy) out=3244 viol=0 nav=2 batch=0 run=1 ans="0" truth="50"
+[62/160] d16 browse-mcp #1: FAIL 104.2s steps=14 usd=0.1027916 in_ex=11656 cw=36384(proxy) out=3500 viol=0 nav=2 batch=0 run=0 ans="0" truth="50"
+[63/160] d16 browse-mcp #2: FAIL 93.2s steps=11 usd=0.09321280000000001 in_ex=12536 cw=33630(proxy) out=2447 viol=0 nav=1 batch=0 run=0 ans="0" truth="50"
+[64/160] d16 ab-cli:r9 #2: FAIL 89.8s steps=13 usd=0.0849773 in_ex=8761 cw=24631(proxy) out=3791 viol=0 nav=2 batch=0 run=1 ans="0" truth="50"
+[65/160] d17 ab-cli:r9 #1: FAIL 6.8s steps=2 usd=0.0118732 in_ex=1410 cw=3317(proxy) out=482 viol=0 nav=2 batch=0 run=1 ans="odyssey=unknown; f150=unknown" truth="odyssey2018=16 f150_2015=14"
+[66/160] d17 browse-mcp #1: FAIL 4.9s steps=1 usd=0.0128588 in_ex=2092 cw=4179(proxy) out=268 viol=0 nav=1 batch=0 run=0 ans="odyssey=unknown; f150=unknown" truth="odyssey2018=16 f150_2015=14"
+[67/160] d17 browse-mcp #2: FAIL 4.8s steps=1 usd=0.0110621 in_ex=1603 cw=3750(proxy) out=279 viol=0 nav=1 batch=0 run=0 ans="odyssey=unknown; f150=unknown" truth="odyssey2018=16 f150_2015=14"
+[68/160] d17 ab-cli:r9 #2: FAIL 5.8s steps=2 usd=0.0086836 in_ex=715 cw=2645(proxy) out=434 viol=0 nav=2 batch=0 run=1 ans="odyssey=unknown; f150=unknown" truth="odyssey2018=16 f150_2015=14"
+[69/160] d18 browse-mcp #1: OK  25.2s steps=4 usd=0.04508379999999999 in_ex=7437 cw=13928(proxy) out=985 viol=0 nav=3 batch=0 run=0 ans="prius=57/$1050; camry=52/$1150" truth="prius 57/1050 camry 52/1150"
+[70/160] d18 ab-cli:r9 #1: OK  56.9s steps=17 usd=0.10058330000000001 in_ex=12488 cw=32879(proxy) out=3368 viol=0 nav=3 batch=0 run=1 ans="prius=57/$1050; camry=52/$1150" truth="prius 57/1050 camry 52/1150"
+[71/160] d18 browse-mcp #2: OK  44.1s steps=4 usd=0.041980100000000006 in_ex=6886 cw=13323(proxy) out=891 viol=0 nav=3 batch=0 run=0 ans="prius=57/$1050; camry=52/$1150" truth="prius 57/1050 camry 52/1150"
+[72/160] d18 ab-cli:r9 #2: OK  31.7s steps=8 usd=0.0494212 in_ex=6538 cw=14471(proxy) out=1708 viol=0 nav=3 batch=0 run=1 ans="prius=57/$1050; camry=52/$1150" truth="prius 57/1050 camry 52/1150"
+[73/160] d19 ab-cli:r9 #1: OK  5s steps=1 usd=0.023364499999999996 in_ex=4985 cw=6141(proxy) out=253 viol=0 nav=1 batch=0 run=1 ans="1988, 32" truth="1988 Summer 32"
+[74/160] d19 browse-mcp #1: OK  5.1s steps=1 usd=0.026618000000000003 in_ex=5542 cw=7624(proxy) out=264 viol=0 nav=1 batch=0 run=0 ans="1988, 32" truth="1988 Summer 32"
+[75/160] d19 ab-cli:r9 #2: OK  5s steps=1 usd=0.020997699999999998 in_ex=4291 cw=5550(proxy) out=287 viol=0 nav=1 batch=0 run=1 ans="1988, 32" truth="1988 Summer 32"
+[76/160] d19 browse-mcp #2: OK  5.3s steps=1 usd=0.025502300000000002 in_ex=5156 cw=7324(proxy) out=302 viol=0 nav=1 batch=0 run=0 ans="1988, 32" truth="1988 Summer 32"
+[77/160] d20 browse-mcp #1: OK  3.8s steps=1 usd=0.011073300000000001 in_ex=1889 cw=3875(proxy) out=171 viol=0 nav=1 batch=0 run=0 ans="McLaren Mercedes, 181" truth="McLaren Mercedes 181"
+[78/160] d20 ab-cli:r9 #1: OK  4.2s steps=1 usd=0.010073799999999999 in_ex=1843 cw=2924(proxy) out=181 viol=0 nav=1 batch=0 run=1 ans="McLaren Mercedes, 181" truth="McLaren Mercedes 181"
+[79/160] d20 ab-cli:r9 #2: OK  4.5s steps=1 usd=0.007306600000000001 in_ex=1177 cw=2308(proxy) out=164 viol=0 nav=1 batch=0 run=1 ans="McLaren Mercedes, 181" truth="McLaren Mercedes 181"
+[80/160] d20 browse-mcp #2: OK  3.8s steps=1 usd=0.0092891 in_ex=1434 cw=3465(proxy) out=170 viol=0 nav=1 batch=0 run=0 ans="McLaren Mercedes, 181" truth="McLaren Mercedes 181"
+[81/160] d21 browse-mcp #1: HANDOFF 18.9s steps=2 usd=0.014042(est) in_ex=2403 cw=4483(proxy) out=262 viol=0 nav=2 batch=0 run=0 ans="" truth=""
+[82/160] d21 ab-cli:r9 #1: OK  8.1s steps=3 usd=0.0228373 in_ex=3478 cw=6155(proxy) out=696 viol=0 nav=1 batch=0 run=1 ans="gek76, 4" truth="gek76 titled=4/10"
+[83/160] d21 browse-mcp #2: HANDOFF 11.2s steps=4 usd=0.016799(est) in_ex=2081 cw=6504(proxy) out=452 viol=0 nav=2 batch=0 run=0 ans="Cloudflare challenge; let me wait briefly to see if it clear" truth=""
+[84/160] d21 ab-cli:r9 #2: OK  6.7s steps=3 usd=0.0118003 in_ex=1207 cw=3767(proxy) out=492 viol=0 nav=1 batch=0 run=1 ans="gek76, 4" truth="gek76 titled=4/10"
+[85/160] d22 browse-mcp #1: OK  12.9s steps=1 usd=0.028903 in_ex=5608 cw=7893(proxy) out=466 viol=0 nav=2 batch=0 run=0 ans="Milwaukee Brewers, 103" truth="Brewers 103"
+[86/160] d22 ab-cli:r9 #1: OK  11.1s steps=1 usd=0.0199458 in_ex=3870 cw=5131(proxy) out=357 viol=0 nav=2 batch=0 run=1 ans="Milwaukee Brewers, 103" truth="Brewers 103"
+[87/160] d22 ab-cli:r9 #2: OK  8.6s steps=1 usd=0.0175401 in_ex=3086 cw=4483(proxy) out=423 viol=0 nav=2 batch=0 run=1 ans="Milwaukee Brewers, 103" truth="Brewers 103"
+[88/160] d22 browse-mcp #2: OK  9.8s steps=1 usd=0.0276286 in_ex=5157 cw=7540(proxy) out=514 viol=0 nav=2 batch=0 run=0 ans="Milwaukee Brewers, 103" truth="Brewers 103"
+[89/160] d23 browse-mcp #1: OK  16.1s steps=3 usd=0.0391388 in_ex=6174 cw=11516(proxy) out=1013 viol=0 nav=10 batch=0 run=0 ans="Gnocchi di patate, 40" truth="Tiramisù:6 Panna cotta:15 Risotto alla m"
+[90/160] d23 ab-cli:r9 #1: OK  10.5s steps=2 usd=0.0181927 in_ex=2381 cw=4555(proxy) out=723 viol=0 nav=9 batch=0 run=1 ans="Gnocchi di patate, 40" truth="Tiramisù:6 Panna cotta:15 Risotto alla m"
+[91/160] d23 browse-mcp #2: OK  9.5s steps=2 usd=0.028413099999999997 in_ex=4553 cw=8313(proxy) out=717 viol=0 nav=9 batch=0 run=0 ans="Gnocchi di patate, 40" truth="Tiramisù:6 Panna cotta:15 Risotto alla m"
+[92/160] d23 ab-cli:r9 #2: OK  10.6s steps=3 usd=0.015609300000000001 in_ex=1456 cw=4300(proxy) out=773 viol=0 nav=5 batch=0 run=1 ans="Gnocchi di patate, 40" truth="Tiramisù:6 Panna cotta:15 Risotto alla m"
+[93/160] d24 browse-mcp #1: OK  44s steps=3 usd=0.0255312 in_ex=3459 cw=8168(proxy) out=778 viol=0 nav=2 batch=0 run=0 ans="297" truth="297"
+[94/160] d24 ab-cli:r9 #1: OK  10.9s steps=3 usd=0.0226028 in_ex=2699 cw=5747(proxy) out=975 viol=0 nav=2 batch=0 run=1 ans="297" truth="297"
+[95/160] d24 ab-cli:r9 #2: OK  11.8s steps=2 usd=0.0158265 in_ex=1385 cw=3791(proxy) out=877 viol=0 nav=2 batch=0 run=1 ans="297" truth="297"
+[96/160] d24 browse-mcp #2: OK  8.6s steps=1 usd=0.013066500000000002 in_ex=1866 cw=4111(proxy) out=374 viol=0 nav=2 batch=0 run=0 ans="297" truth="297"
+[97/160] d25 ab-cli:r9 #1: OK  5.3s steps=1 usd=0.009151300000000001 in_ex=1289 cw=2502(proxy) out=310 viol=0 nav=1 batch=0 run=1 ans="chf=0.8328; inr=95.29" truth="chf=0.832768 inr=95.28735"
+[98/160] d25 browse-mcp #1: OK  5.4s steps=1 usd=0.012668800000000001 in_ex=1967 cw=4085(proxy) out=299 viol=0 nav=1 batch=0 run=0 ans="chf=0.8328; inr=95.29" truth="chf=0.832768 inr=95.28735"
+[99/160] d25 ab-cli:r9 #2: OK  5.7s steps=1 usd=0.0066674 in_ex=598 cw=1902(proxy) out=331 viol=0 nav=1 batch=0 run=1 ans="chf=0.8328; inr=95.29" truth="chf=0.832768 inr=95.28735"
+[100/160] d25 browse-mcp #2: OK  4.5s steps=1 usd=0.0106418 in_ex=1478 cw=3633(proxy) out=287 viol=0 nav=1 batch=0 run=0 ans="chf=0.8328; inr=95.29" truth="chf=0.832768 inr=95.28735"
+[101/160] d26 browse-mcp #1: OK  5.9s steps=1 usd=0.013800199999999999 in_ex=2279 cw=4388(proxy) out=287 viol=0 nav=1 batch=0 run=0 ans="JPY100=13,730; CHF=26,103" truth="jpy100=13.73 chf=26.103"
+[102/160] d26 ab-cli:r9 #1: OK  16.5s steps=6 usd=0.0347928 in_ex=4811 cw=10263(proxy) out=1125 viol=0 nav=4 batch=0 run=1 ans="JPY100=13,730; CHF=26,103" truth="jpy100=13.73 chf=26.103"
+[103/160] d26 browse-mcp #2: OK  19.6s steps=8 usd=0.05421229999999999 in_ex=7388 cw=19790(proxy) out=1366 viol=0 nav=4 batch=0 run=0 ans="JPY100=13,730; CHF=26,103" truth="jpy100=13.73 chf=26.103"
+[104/160] d26 ab-cli:r9 #2: OK  21.6s steps=8 usd=0.0379457 in_ex=4291 cw=11861(proxy) out=1472 viol=0 nav=4 batch=0 run=1 ans="JPY100=13,730; CHF=26,103" truth="jpy100=13.73 chf=26.103"
+[105/160] d27 ab-cli:r9 #1: OK  9.7s steps=3 usd=0.0163255 in_ex=2165 cw=4753(proxy) out=566 viol=0 nav=1 batch=0 run=1 ans="176654" truth="176654"
+[106/160] d27 browse-mcp #1: OK  8.5s steps=3 usd=0.0224099 in_ex=3017 cw=7615(proxy) out=640 viol=0 nav=1 batch=0 run=0 ans="176654" truth="176654"
+[107/160] d27 browse-mcp #2: OK  6.2s steps=2 usd=0.0165776 in_ex=2329 cw=5724(proxy) out=431 viol=0 nav=1 batch=0 run=0 ans="176654" truth="176654"
+[108/160] d27 ab-cli:r9 #2: OK  9.5s steps=3 usd=0.015113800000000002 in_ex=1665 cw=4438(proxy) out=633 viol=0 nav=1 batch=0 run=1 ans="176654" truth="176654"
+[109/160] d28 ab-cli:r9 #1: OK  5.8s steps=1 usd=0.0122577 in_ex=1821 cw=3131(proxy) out=408 viol=0 nav=1 batch=0 run=1 ans="Nigeria, 4.20" truth="Nigeria 4.2"
+[110/160] d28 browse-mcp #1: OK  5.4s steps=1 usd=0.0141672 in_ex=2482 cw=4542(proxy) out=243 viol=0 nav=1 batch=0 run=0 ans="Nigeria, 4.20" truth="Nigeria 4.2"
+[111/160] d28 ab-cli:r9 #2: OK  5.8s steps=1 usd=0.0104583 in_ex=1619 cw=2891(proxy) out=302 viol=0 nav=1 batch=0 run=1 ans="Nigeria, 4.20" truth="Nigeria 4.2"
+[112/160] d28 browse-mcp #2: OK  4.6s steps=1 usd=0.0122448 in_ex=2007 cw=4108(proxy) out=236 viol=0 nav=1 batch=0 run=0 ans="Nigeria, 4.20" truth="Nigeria 4.2"
+[113/160] d29 browse-mcp #1: OK  5.9s steps=1 usd=0.0152189 in_ex=2797 cw=4838(proxy) out=222 viol=0 nav=1 batch=0 run=0 ans="fixed=1.40; composite=5.51" truth="November 2026-April 2027 fixed=1.4 comp="
+[114/160] d29 ab-cli:r9 #1: OK  5.7s steps=1 usd=0.0122054 in_ex=2275 cw=3399(proxy) out=221 viol=0 nav=1 batch=0 run=1 ans="fixed=1.40; composite=5.51" truth="November 2026-April 2027 fixed=1.4 comp="
+[115/160] d29 browse-mcp #2: OK  4.3s steps=1 usd=0.0132719 in_ex=2303 cw=4391(proxy) out=220 viol=0 nav=1 batch=0 run=0 ans="fixed=1.40; composite=5.51" truth="November 2026-April 2027 fixed=1.4 comp="
+[116/160] d29 ab-cli:r9 #2: OK  5.7s steps=1 usd=0.0094635 in_ex=1572 cw=2767(proxy) out=221 viol=0 nav=1 batch=0 run=1 ans="fixed=1.40; composite=5.51" truth="November 2026-April 2027 fixed=1.4 comp="
+[117/160] d30 ab-cli:r9 #1: OK  11.7s steps=2 usd=0.0135434 in_ex=2064 cw=3934(proxy) out=381 viol=0 nav=1 batch=0 run=1 ans="Admin" truth="Tiny Islands (2019) | Midnight Train | A"
+[118/160] d30 browse-mcp #1: OK  13.9s steps=2 usd=0.015190700000000001 in_ex=1964 cw=5243(proxy) out=452 viol=0 nav=1 batch=0 run=0 ans="Admin" truth="Tiny Islands (2019) | Midnight Train | A"
+[119/160] d30 ab-cli:r9 #2: OK  11.3s steps=1 usd=0.006980200000000001 in_ex=574 cw=1918(proxy) out=372 viol=0 nav=1 batch=0 run=1 ans="Admin" truth="Tiny Islands (2019) | Midnight Train | A"
+[120/160] d30 browse-mcp #2: OK  13.2s steps=1 usd=0.011610800000000001 in_ex=1673 cw=3846(proxy) out=306 viol=0 nav=1 batch=0 run=0 ans="Admin" truth="Tiny Islands (2019) | Midnight Train | A"
+[121/160] d31 browse-mcp #1: OK  61.2s steps=8 usd=0.07281580000000001 in_ex=10720 cw=23534(proxy) out=1906 viol=0 nav=3 batch=0 run=0 ans="Mobilité et Espace Public=100; Environnement=49" truth="Mobilité et Espace Public=100 env=49"
+[122/160] d31 ab-cli:r9 #1: OK  11.3s steps=2 usd=0.0200124 in_ex=3442 cw=5477(proxy) out=469 viol=0 nav=2 batch=0 run=1 ans="Mobilité et Espace Public=100; Environnement=49" truth="Mobilité et Espace Public=100 env=49"
+[123/160] d31 browse-mcp #2: OK  85.4s steps=8 usd=0.0528647 in_ex=7846 cw=19787(proxy) out=1064 viol=0 nav=2 batch=0 run=0 ans="Mobilité et Espace Public=100; Environnement=49" truth="Mobilité et Espace Public=100 env=49"
+[124/160] d31 ab-cli:r9 #2: OK  12.3s steps=2 usd=0.016492899999999998 in_ex=2574 cw=4670(proxy) out=457 viol=0 nav=2 batch=0 run=1 ans="Mobilité et Espace Public=100; Environnement=49" truth="Mobilité et Espace Public=100 env=49"
+[125/160] d32 browse-mcp #1: OK  6s steps=2 usd=0.0178822 in_ex=2553 cw=5879(proxy) out=484 viol=0 nav=2 batch=0 run=0 ans="Athens, 2026-09-22" truth="Barcelona:2026-09-17 Lisbon:2026-09-19 M"
+[126/160] d32 ab-cli:r9 #1: OK  9.5s steps=2 usd=0.0158124 in_ex=2303 cw=4307(proxy) out=512 viol=0 nav=2 batch=0 run=1 ans="Athens, 2026-09-22" truth="Barcelona:2026-09-17 Lisbon:2026-09-19 M"
+[127/160] d32 ab-cli:r9 #2: OK  5s steps=1 usd=0.0161221 in_ex=2861 cw=4208(proxy) out=371 viol=0 nav=2 batch=0 run=1 ans="Athens, 2026-09-22" truth="Barcelona:2026-09-17 Lisbon:2026-09-19 M"
+[128/160] d32 browse-mcp #2: OK  8.7s steps=4 usd=0.0211683 in_ex=2123 cw=7889(proxy) out=770 viol=0 nav=2 batch=0 run=0 ans="Athens, 2026-09-22" truth="Barcelona:2026-09-17 Lisbon:2026-09-19 M"
+[129/160] d33 browse-mcp #1: OK  8.3s steps=2 usd=0.022210599999999997 in_ex=3065 cw=6665(proxy) out=707 viol=0 nav=3 batch=0 run=0 ans="japan=16; south-korea=23; thailand=20" truth="jp=16 kr=23 th=20"
+[130/160] d33 ab-cli:r9 #1: OK  8.4s steps=2 usd=0.020888900000000002 in_ex=2997 cw=5286(proxy) out=736 viol=0 nav=3 batch=0 run=1 ans="japan=16; south-korea=23; thailand=20" truth="jp=16 kr=23 th=20"
+[131/160] d33 browse-mcp #2: OK  8.3s steps=2 usd=0.022878 in_ex=3034 cw=6795(proxy) out=777 viol=0 nav=3 batch=0 run=0 ans="japan=16; south-korea=23; thailand=20" truth="jp=16 kr=23 th=20"
+[132/160] d33 ab-cli:r9 #2: OK  6s steps=1 usd=0.0087854 in_ex=1028 cw=2370(proxy) out=371 viol=0 nav=3 batch=0 run=1 ans="japan=16; south-korea=23; thailand=20" truth="jp=16 kr=23 th=20"
+[133/160] d34 ab-cli:r9 #1: OK  5.4s steps=1 usd=0.008943099999999999 in_ex=1282 cw=2477(proxy) out=292 viol=0 nav=2 batch=0 run=1 ans="mythic=25; red=5" truth="mythic=25 red=5"
+[134/160] d34 browse-mcp #1: OK  4.4s steps=1 usd=0.0117726 in_ex=1908 cw=3960(proxy) out=233 viol=0 nav=2 batch=0 run=0 ans="mythic=25; red=5" truth="mythic=25 red=5"
+[135/160] d34 browse-mcp #2: OK  5s steps=1 usd=0.0103195 in_ex=1440 cw=3578(proxy) out=270 viol=0 nav=2 batch=0 run=0 ans="mythic=25; red=5" truth="mythic=25 red=5"
+[136/160] d34 ab-cli:r9 #2: OK  5.2s steps=1 usd=0.006751 in_ex=619 cw=1923(proxy) out=331 viol=0 nav=2 batch=0 run=1 ans="mythic=25; red=5" truth="mythic=25 red=5"
+[137/160] d35 browse-mcp #1: OK  9.4s steps=1 usd=0.016956 in_ex=2989 cw=5126(proxy) out=319 viol=0 nav=4 batch=0 run=0 ans="KLXV, 9934" truth="KASE=7837.9 KLXV=9933.5 KJAC=6451.3 KTEX"
+[138/160] d35 ab-cli:r9 #1: OK  9.3s steps=1 usd=0.0096767 in_ex=1353 cw=2593(proxy) out=337 viol=0 nav=4 batch=0 run=1 ans="KLXV, 9934" truth="KASE=7837.9 KLXV=9933.5 KJAC=6451.3 KTEX"
+[139/160] d35 ab-cli:r9 #2: OK  10.8s steps=1 usd=0.0068921 in_ex=662 cw=1962(proxy) out=328 viol=0 nav=4 batch=0 run=1 ans="KLXV, 9934" truth="KASE=7837.9 KLXV=9933.5 KJAC=6451.3 KTEX"
+[140/160] d35 browse-mcp #2: OK  8.2s steps=1 usd=0.0153546 in_ex=2489 cw=4710(proxy) out=354 viol=0 nav=4 batch=0 run=0 ans="KLXV, 9934" truth="KASE=7837.9 KLXV=9933.5 KJAC=6451.3 KTEX"
+[141/160] d36 ab-cli:r9 #1: OK  8.1s steps=3 usd=0.016493400000000002 in_ex=2082 cw=4737(proxy) out=614 viol=0 nav=2 batch=0 run=1 ans="The Valley of Fear" truth="The Valley of Fear"
+[142/160] d36 browse-mcp #1: OK  81.5s steps=7 usd=0.04649160000000001 in_ex=5334 cw=15888(proxy) out=1626 viol=0 nav=4 batch=0 run=0 ans="The Valley of Fear" truth="The Valley of Fear"
+[143/160] d36 browse-mcp #2: OK  7.2s steps=2 usd=0.0191506 in_ex=2567 cw=6134(proxy) out=592 viol=0 nav=1 batch=0 run=0 ans="The Valley of Fear" truth="The Valley of Fear"
+[144/160] d36 ab-cli:r9 #2: OK  7.5s steps=2 usd=0.0143257 in_ex=1667 cw=3856(proxy) out=609 viol=0 nav=1 batch=0 run=1 ans="The Valley of Fear" truth="The Valley of Fear"
+[145/160] d37 ab-cli:r9 #1: OK  7.8s steps=1 usd=0.0183356 in_ex=3835 cw=4949(proxy) out=210 viol=0 nav=1 batch=0 run=1 ans="6" truth="2026-11-14 max=5.7"
+[146/160] d37 browse-mcp #1: OK  8.7s steps=1 usd=0.018071 in_ex=3575 cw=5590(proxy) out=196 viol=0 nav=1 batch=0 run=0 ans="6" truth="2026-11-14 max=5.7"
+[147/160] d37 browse-mcp #2: OK  8.3s steps=1 usd=0.0162485 in_ex=3082 cw=5157(proxy) out=206 viol=0 nav=1 batch=0 run=0 ans="6" truth="2026-11-14 max=5.7"
+[148/160] d37 ab-cli:r9 #2: OK  7.7s steps=1 usd=0.0121038 in_ex=2307 cw=3472(proxy) out=191 viol=0 nav=1 batch=0 run=1 ans="6" truth="2026-11-14 max=5.7"
+[149/160] d38 browse-mcp #1: OK  8.5s steps=1 usd=0.021810700000000002 in_ex=4100 cw=6279(proxy) out=360 viol=0 nav=4 batch=0 run=0 ans="Spain, 21.9" truth="ESP:2025:21.848621 DEU:2025:17.907167 IT"
+[150/160] d38 ab-cli:r9 #1: OK  8s steps=1 usd=0.0157592 in_ex=2941 cw=4154(proxy) out=310 viol=0 nav=4 batch=0 run=1 ans="Spain, 21.9" truth="ESP:2025:21.848621 DEU:2025:17.907167 IT"
+[151/160] d38 browse-mcp #2: OK  8.8s steps=1 usd=0.0212937 in_ex=4141 cw=6296(proxy) out=287 viol=0 nav=4 batch=0 run=0 ans="Spain, 21.9" truth="ESP:2025:21.848621 DEU:2025:17.907167 IT"
+[152/160] d38 ab-cli:r9 #2: OK  14s steps=2 usd=0.0180772 in_ex=2582 cw=4844(proxy) out=611 viol=0 nav=8 batch=0 run=1 ans="Spain, 21.9" truth="ESP:2025:21.848621 DEU:2025:17.907167 IT"
+[153/160] d39 browse-mcp #1: OK  10.2s steps=2 usd=0.0259459 in_ex=4548 cw=8093(proxy) out=469 viol=0 nav=1 batch=0 run=0 ans="Chile, 95.6" truth="CHL:2025:95.59024 MEX:2025:83.12234 PER:"
+[154/160] d39 ab-cli:r9 #1: OK  9.5s steps=2 usd=0.0210982 in_ex=3647 cw=5768(proxy) out=489 viol=0 nav=1 batch=0 run=1 ans="Chile, 95.6" truth="CHL:2025:95.59024 MEX:2025:83.12234 PER:"
+[155/160] d39 ab-cli:r9 #2: OK  9.8s steps=2 usd=0.0181714 in_ex=2895 cw=5088(proxy) out=490 viol=0 nav=1 batch=0 run=1 ans="Chile, 95.6" truth="CHL:2025:95.59024 MEX:2025:83.12234 PER:"
+[156/160] d39 browse-mcp #2: OK  10.5s steps=2 usd=0.0263197 in_ex=4603 cw=8257(proxy) out=474 viol=0 nav=1 batch=0 run=0 ans="Chile, 95.6" truth="CHL:2025:95.59024 MEX:2025:83.12234 PER:"
+[157/160] d40 ab-cli:r9 #1: OK  4.5s steps=1 usd=0.0093781 in_ex=1554 cw=2681(proxy) out=227 viol=0 nav=1 batch=0 run=1 ans="Esteban Ocon, 74" truth="Esteban Ocon 74"
+[158/160] d40 browse-mcp #1: OK  4.2s steps=1 usd=0.0115875 in_ex=1915 cw=3943(proxy) out=212 viol=0 nav=1 batch=0 run=0 ans="Esteban Ocon, 74" truth="Esteban Ocon 74"
+[159/160] d40 ab-cli:r9 #2: OK  4.9s steps=1 usd=0.0066608 in_ex=883 cw=2067(proxy) out=217 viol=0 nav=1 batch=0 run=1 ans="Esteban Ocon, 74" truth="Esteban Ocon 74"
+[160/160] d40 browse-mcp #2: OK  4s steps=1 usd=0.011855500000000001 in_ex=1983 cw=4052(proxy) out=207 viol=0 nav=1 batch=0 run=0 ans="Esteban Ocon, 74" truth="Esteban Ocon 74"
+# Benchmark summary 2026-11-13T10-51-21-blind3-final
+
+- model/config: see meta.json (claude claude-sonnet-5-5); agent-browser {"main":"agent-browser 0.41.2","r9":"agent-browser 0.41.2"}; browse 0.0.14; warm=true
+- N=2 per task per variant; interleaved; elapsed 56.3 min
+- success = checker passed; clean = passed AND no rule violation (shell use outside the tool, direct URL)
+
+## Suite: blind3
+
+### Per-variant (medians over all runs; success over all runs)
+
+| variant | runs | success | compliant (success+clean) | cost USD (primary) | wall s | steps | input | input excl cache | output | total excl cache reads | cost-weighted tokens (proxy) | median call ms | tool-out bytes |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| ab-cli:r9 | 80 | 70/80 | 70/80 | 0 | 9 | 2 | 16515 | 2124 | 476 | 2591 | 4190 | 1761 | 1857 |
+| browse-mcp | 80 | 70/80 | 70/80 | 0 | 9 | 1 | 24308 | 2958 | 410 | 3324 | 6251 | 1908 | 2792 |
+
+### Claim-format deltas (medians, all runs)
+
+- browse vs ab-cli:r9: 3% faster, 39% more input tokens (excl cache), 47% more input tokens (incl cache), 50% fewer steps, 28% more tokens excl. cache reads
+
+### Per-task ratio geomean vs browse-mcp (<1 = better than browse-mcp; medians per task)
+
+| variant | compliant success | cost USD | steps | wall s | input excl cache | cost-weighted (proxy) | used batch/chain/run (runs) |
+|---|---|---|---|---|---|---|---|
+| ab-cli:r9 | compliant 70/80 vs 70/80 | 0.75 | 1.05 | 0.90 | 0.67 | 0.65 | batch 0, chain 0, run 80 |
+
+### Per task (median of reps; ok = successes/runs)
+
+| task | variant | ok | wall s | steps | input excl cache | output | total excl cache | tool bytes |
+|---|---|---|---|---|---|---|---|---|
+| d1 | ab-cli:r9 | 2/2 | 6.6 | 1 | 1990 | 356 | 2346 | 363 |
+| d1 | browse-mcp | 2/2 | 6.8 | 1 | 7117 | 386 | 7503 | 1219 |
+| d2 | ab-cli:r9 | 2/2 | 11.3 | 4 | 2291 | 920 | 3210 | 1615 |
+| d2 | browse-mcp | 2/2 | 9.2 | 3 | 2594 | 648 | 3242 | 1757 |
+| d3 | ab-cli:r9 | 2/2 | 11.6 | 1 | 1421 | 514 | 1934 | 914 |
+| d3 | browse-mcp | 2/2 | 9.9 | 1 | 3066 | 405 | 3471 | 3269 |
+| d4 | ab-cli:r9 | 0/2 | 62.0 | 16 | 13098 | 3515 | 16613 | 18531 |
+| d4 | browse-mcp | 0/2 | 139.8 | 13 | 8865 | 2834 | 11699 | 10219 |
+| d5 | ab-cli:r9 | 0/2 | 8.0 | 4 | 1455 | 615 | 2069 | 795 |
+| d5 | browse-mcp | 0/2 | 5.8 | 2 | 1975 | 361 | 2336 | 1238 |
+| d6 | ab-cli:r9 | 2/2 | 64.8 | 6 | 5625 | 1258 | 6883 | 8898 |
+| d6 | browse-mcp | 2/2 | 44.1 | 4 | 5505 | 563 | 6068 | 8754 |
+| d7 | ab-cli:r9 | 2/2 | 22.7 | 1 | 1434 | 399 | 1833 | 705 |
+| d7 | browse-mcp | 2/2 | 19.2 | 1 | 1863 | 304 | 2167 | 651 |
+| d8 | ab-cli:r9 | 1/2 | 13.0 | 4 | 4163 | 1043 | 5205 | 5293 |
+| d8 | browse-mcp | 2/2 | 14.6 | 6 | 7244 | 1275 | 8519 | 8868 |
+| d9 | ab-cli:r9 | 2/2 | 10.6 | 2 | 1407 | 593 | 2000 | 719 |
+| d9 | browse-mcp | 2/2 | 8.7 | 3 | 2108 | 561 | 2669 | 896 |
+| d10 | ab-cli:r9 | 2/2 | 7.5 | 2 | 2102 | 379 | 2481 | 2570 |
+| d10 | browse-mcp | 2/2 | 24.9 | 2 | 2814 | 518 | 3332 | 2414 |
+| d11 | ab-cli:r9 | 2/2 | 7.0 | 2 | 2614 | 667 | 3280 | 3143 |
+| d11 | browse-mcp | 2/2 | 7.5 | 2 | 3074 | 774 | 3847 | 2820 |
+| d12 | ab-cli:r9 | 1/2 | 69.3 | 8 | 9287 | 1984 | 11271 | 11322 |
+| d12 | browse-mcp | 2/2 | 74.2 | 4 | 8550 | 1078 | 9628 | 13599 |
+| d13 | ab-cli:r9 | 2/2 | 7.9 | 1 | 1804 | 210 | 2014 | 2771 |
+| d13 | browse-mcp | 2/2 | 7.9 | 1 | 3261 | 217 | 3478 | 4429 |
+| d14 | ab-cli:r9 | 2/2 | 16.2 | 2 | 1212 | 502 | 1714 | 401 |
+| d14 | browse-mcp | 2/2 | 12.9 | 1 | 1841 | 347 | 2188 | 702 |
+| d15 | ab-cli:r9 | 2/2 | 5.2 | 1 | 895 | 200 | 1094 | 159 |
+| d15 | browse-mcp | 2/2 | 4.6 | 1 | 7351 | 194 | 7544 | 10590 |
+| d16 | ab-cli:r9 | 0/2 | 85.7 | 12 | 9881 | 3518 | 13399 | 11926 |
+| d16 | browse-mcp | 0/2 | 98.7 | 13 | 12096 | 2974 | 15070 | 17104 |
+| d17 | ab-cli:r9 | 0/2 | 6.3 | 2 | 1063 | 458 | 1521 | 393 |
+| d17 | browse-mcp | 0/2 | 4.8 | 1 | 1848 | 274 | 2121 | 1090 |
+| d18 | ab-cli:r9 | 2/2 | 44.3 | 13 | 9513 | 2538 | 12051 | 10958 |
+| d18 | browse-mcp | 2/2 | 34.6 | 4 | 7162 | 938 | 8100 | 9047 |
+| d19 | ab-cli:r9 | 2/2 | 5.0 | 1 | 4638 | 270 | 4908 | 5886 |
+| d19 | browse-mcp | 2/2 | 5.2 | 1 | 5349 | 283 | 5632 | 6132 |
+| d20 | ab-cli:r9 | 2/2 | 4.3 | 1 | 1510 | 173 | 1683 | 1381 |
+| d20 | browse-mcp | 2/2 | 3.8 | 1 | 1662 | 171 | 1832 | 580 |
+| d21 | ab-cli:r9 | 2/2 | 7.4 | 3 | 2343 | 594 | 2937 | 1972 |
+| d21 | browse-mcp | 0/2 | 15.0 | 3 | 2242 | 357 | 2599 | 1480 |
+| d22 | ab-cli:r9 | 2/2 | 9.8 | 1 | 3478 | 390 | 3868 | 4264 |
+| d22 | browse-mcp | 2/2 | 11.4 | 1 | 5383 | 490 | 5873 | 6218 |
+| d23 | ab-cli:r9 | 2/2 | 10.6 | 3 | 1919 | 748 | 2667 | 1334 |
+| d23 | browse-mcp | 2/2 | 12.8 | 3 | 5364 | 865 | 6229 | 7524 |
+| d24 | ab-cli:r9 | 2/2 | 11.4 | 3 | 2042 | 926 | 2968 | 1300 |
+| d24 | browse-mcp | 2/2 | 26.3 | 2 | 2663 | 576 | 3239 | 2239 |
+| d25 | ab-cli:r9 | 2/2 | 5.5 | 1 | 944 | 321 | 1264 | 142 |
+| d25 | browse-mcp | 2/2 | 5.0 | 1 | 1723 | 293 | 2016 | 558 |
+| d26 | ab-cli:r9 | 2/2 | 19.1 | 7 | 4551 | 1299 | 5850 | 4994 |
+| d26 | browse-mcp | 2/2 | 12.8 | 5 | 4834 | 827 | 5660 | 5238 |
+| d27 | ab-cli:r9 | 2/2 | 9.6 | 3 | 1915 | 600 | 2515 | 1672 |
+| d27 | browse-mcp | 2/2 | 7.3 | 3 | 2673 | 536 | 3209 | 2102 |
+| d28 | ab-cli:r9 | 2/2 | 5.8 | 1 | 1720 | 355 | 2075 | 1538 |
+| d28 | browse-mcp | 2/2 | 5.0 | 1 | 2245 | 240 | 2484 | 1720 |
+| d29 | ab-cli:r9 | 2/2 | 5.7 | 1 | 1924 | 221 | 2145 | 3002 |
+| d29 | browse-mcp | 2/2 | 5.1 | 1 | 2550 | 221 | 2771 | 2891 |
+| d30 | ab-cli:r9 | 2/2 | 11.5 | 2 | 1319 | 377 | 1696 | 807 |
+| d30 | browse-mcp | 2/2 | 13.6 | 2 | 1819 | 379 | 2198 | 588 |
+| d31 | ab-cli:r9 | 2/2 | 11.8 | 2 | 3008 | 463 | 3471 | 4198 |
+| d31 | browse-mcp | 2/2 | 73.3 | 8 | 9283 | 1485 | 10768 | 14896 |
+| d32 | ab-cli:r9 | 2/2 | 7.3 | 2 | 2582 | 442 | 3024 | 3725 |
+| d32 | browse-mcp | 2/2 | 7.3 | 3 | 2338 | 627 | 2965 | 1032 |
+| d33 | ab-cli:r9 | 2/2 | 7.2 | 2 | 2013 | 554 | 2566 | 2019 |
+| d33 | browse-mcp | 2/2 | 8.3 | 2 | 3050 | 742 | 3792 | 2518 |
+| d34 | ab-cli:r9 | 2/2 | 5.3 | 1 | 951 | 312 | 1262 | 202 |
+| d34 | browse-mcp | 2/2 | 4.7 | 1 | 1674 | 252 | 1926 | 425 |
+| d35 | ab-cli:r9 | 2/2 | 10.1 | 1 | 1008 | 333 | 1340 | 242 |
+| d35 | browse-mcp | 2/2 | 8.8 | 1 | 2739 | 337 | 3076 | 2792 |
+| d36 | ab-cli:r9 | 2/2 | 7.8 | 3 | 1875 | 612 | 2486 | 1436 |
+| d36 | browse-mcp | 2/2 | 44.4 | 5 | 3951 | 1109 | 5060 | 3517 |
+| d37 | ab-cli:r9 | 2/2 | 7.8 | 1 | 3071 | 201 | 3272 | 4404 |
+| d37 | browse-mcp | 2/2 | 8.5 | 1 | 3329 | 201 | 3530 | 3647 |
+| d38 | ab-cli:r9 | 2/2 | 11.0 | 2 | 2762 | 461 | 3222 | 3257 |
+| d38 | browse-mcp | 2/2 | 8.7 | 1 | 4121 | 324 | 4444 | 4277 |
+| d39 | ab-cli:r9 | 2/2 | 9.7 | 2 | 3271 | 490 | 3761 | 3382 |
+| d39 | browse-mcp | 2/2 | 10.3 | 2 | 4576 | 472 | 5047 | 4092 |
+| d40 | ab-cli:r9 | 2/2 | 4.7 | 1 | 1219 | 222 | 1441 | 680 |
+| d40 | browse-mcp | 2/2 | 4.1 | 1 | 1949 | 210 | 2159 | 951 |
+
+### Failures / violations
+
+- d4 ab-cli:r9 #1: FAILED; answer="unavailable — the fare calculator returned an error, so no fares were shown" truth="clipper=15.35 senior=5.75"  
+- d4 browse-mcp #1: FAILED; answer="Let me try a real mouse click on the Go button after scrolling it into view." truth="" note=handoff: The BART fare calculator returns a 403 error when automated. Dublin/Pleasanton and SFO are selected; please click Go (reload and reselect if needed) so the fare 
+- d4 browse-mcp #2: FAILED; answer="unable to determine; the BART fare calculator returned a 403 error and showed no" truth="clipper=15.35 senior=5.75"  
+- d4 ab-cli:r9 #2: FAILED; answer="unavailable — the calculator returned an error and showed no fares" truth="clipper=15.35 senior=5.75"  
+- d5 ab-cli:r9 #1: FAILED; answer="unable to determine — registry.faa.gov returned Access Denied" truth="N172SP:1977 N100:1940 N77:1988"  
+- d5 browse-mcp #1: FAILED; answer="unable to determine, the FAA registry blocked access (403 Access Denied)" truth="N172SP:1977 N100:1940 N77:1988"  
+- d5 browse-mcp #2: FAILED; answer="unable to determine — registry.faa.gov blocked access" truth="N172SP:1977 N100:1940 N77:1988"  
+- d5 ab-cli:r9 #2: FAILED; answer="unable to determine – registry.faa.gov denied access" truth="N172SP:1977 N100:1940 N77:1988"  
+- d8 ab-cli:r9 #2: FAILED; answer="CA=6.003; WA=5.298; higher=CA" truth="CA=5.888 WA=5.203"  
+- d12 ab-cli:r9 #2: FAILED; answer="VT=25; NH=44; ME=29" truth="VT=12 NH=16 ME=22"  
+- d16 ab-cli:r9 #1: FAILED; answer="0" truth="50"  
+- d16 browse-mcp #1: FAILED; answer="0" truth="50"  
+- d16 browse-mcp #2: FAILED; answer="0" truth="50"  
+- d16 ab-cli:r9 #2: FAILED; answer="0" truth="50"  
+- d17 ab-cli:r9 #1: FAILED; answer="odyssey=unknown; f150=unknown" truth="odyssey2018=16 f150_2015=14"  
+- d17 browse-mcp #1: FAILED; answer="odyssey=unknown; f150=unknown" truth="odyssey2018=16 f150_2015=14"  
+- d17 browse-mcp #2: FAILED; answer="odyssey=unknown; f150=unknown" truth="odyssey2018=16 f150_2015=14"  
+- d17 ab-cli:r9 #2: FAILED; answer="odyssey=unknown; f150=unknown" truth="odyssey2018=16 f150_2015=14"  
+- d21 browse-mcp #1: FAILED; answer="" truth="" note=handoff: Solve the security check on https://lichess.org, then click Continue 
+- d21 browse-mcp #2: FAILED; answer="Cloudflare challenge; let me wait briefly to see if it clears itself." truth="" note=handoff: Please complete the Cloudflare verification on the lichess.org tab, then I'll continue. 
+
+

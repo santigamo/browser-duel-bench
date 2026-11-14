@@ -1,5 +1,7 @@
 # Evaluacion ciega de r10.1: preregistro (BORRADOR para revision del coordinador, NO final)
 
+> Nota posterior (2026-11-14, tras la ejecucion): el titulo y las frases de borrador de mas abajo se dejan tal cual por honestidad con la historia; el texto quedo fijado en el commit 1f93374 (13:49) y no se toco salvo la Enmienda 1 y las notas POST HOC del final.
+
 Fijado el 2026-11-14, antes de que existan las tareas g1-g40. No se cambia despues de ver las tareas ni los resultados. Cualquier desviacion se anade al final como "Desviacion N" con fecha y motivo, antes de la ejecucion afectada, y se publica.
 
 ## Que se compara
@@ -78,3 +80,7 @@ Solo por infraestructura (sitio caido, comprobador sin conexion con evidencia ex
 6. Version del cliente. La ejecucion uso Claude Code 2.1.325 (r9 uso 2.1.323). No estaba fijada en el preregistro.
 7. Wall desde `duration_ms`. Segun el informe es 0,68 [0,57, 0,82] (fila de `duration_ms` de la sensibilidad); 0,84 [0,71, 0,98] es otra cifra del informe (coste frente a browse en las 36 tareas comunes), no un wall. El wall cobrado (puerta 4) es 0,71 [0,61, 0,84].
 8. Orden de tareas. En `meta.json` la lista de tareas pone g25 al final; el orden de ejecucion lo fija la semilla (planRuns), no esa lista. No es una desviacion de contenido.
+9. Titulo y frases de borrador. El titulo dice "BORRADOR para revision del coordinador, NO final" y quedan dos frases de borrador; el texto se fijo en el commit 1f93374 (13:49) y no se toco salvo la Enmienda 1 y estas notas.
+10. Commit del arnes en las filas. Las filas registran harness_commit 2eb679a, no 7049e9a; la diferencia es solo blind4/tasks.ts y este preregistro.
+11. Guia de upstream. v043 cargo la guia (`skills get core | head -60`) en 40/40 ejecuciones (+2021 tokens de mediana) y abrio sesion propia en 36/40; r10.1 en 0/40. Explica casi toda la diferencia de pico de contexto. (Comprobado en las transcripciones tras el informe: la cifra de sesion propia sale 36/40, no 37/40; las cuatro restantes son g6, g11, g13 y g36.)
+12. IC del wall cobrado. El IC del wall cobrado sale 0,84 en la tabla de puertas y 0,85 en la tabla por pares (flujos de azar distintos).

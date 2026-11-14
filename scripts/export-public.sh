@@ -13,8 +13,11 @@ R8=2026-11-08T18-30-37-blind2-sonnet        # r8 round, c1..c20 (failed its thre
 R7B=2026-11-08T12-04-16-blind-codex         # r7 round, second-model run (the r7 verdict itself is guard/resultado-ciego-r7.md)
 
 [ -z "$(git -C "$HERE" status --porcelain -- . ':!results')" ] || { echo "working tree has uncommitted changes; commit first" >&2; exit 1; }
-rm -rf "$OUT"; mkdir -p "$OUT"
+# keep an existing .git in the output directory (the public repo), replace everything else
+mkdir -p "$OUT"; find "$OUT" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
 git -C "$HERE" archive HEAD | tar -x -C "$OUT"
+# the private bench ignores results/ (local runs); the public repo tracks the scrubbed results it ships
+grep -v '^results/$' "$OUT/.gitignore" > "$OUT/.gitignore.tmp" && mv "$OUT/.gitignore.tmp" "$OUT/.gitignore"
 
 # full scrubbed rows and transcripts of the published results (r10 and r9)
 $SCRUB "$HERE/$R/$FINAL10" "$OUT/$R/$FINAL10"
