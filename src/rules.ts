@@ -6,7 +6,7 @@ import type { Task } from "./tasks.ts";
 export const RULES_V1 = "Use the website's own pages through the browser tool. Do not call the site's data or API endpoints, or fetch data outside the browser, unless the task says so. Do any arithmetic or text processing inside the browser tool, not with other programs. Answer only from what you observed in the browser during this task.";
 export const RULES_V1_SHA256 = createHash("sha256").update(RULES_V1).digest("hex");
 /** Suites for which the rules are stated by default; older suites stay as they were so past results remain reproducible. */
-export const RULES_DEFAULT_SUITES: Task["suite"][] = ["blind3", "diag-r9"];
+export const RULES_DEFAULT_SUITES: Task["suite"][] = ["blind3", "blind4", "diag-r9"];
 /** flag: undefined (default by suite) | "v1" | "off" */
 export const rulesOn = (t: Pick<Task, "suite">, flag?: string): boolean => flag === "v1" ? true : flag === "off" ? false : RULES_DEFAULT_SUITES.includes(t.suite);
 /** The prompt for a task: unchanged when the rules are off (byte-identical to the old suffix), the rule block between task and tool line when on. */

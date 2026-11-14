@@ -54,3 +54,11 @@ test("violation detector sees Codex shell calls through the zsh -lc wrapper (the
   const ok = analyzeShell(unwrapCodexCommand(`/bin/zsh -lc "agent-browser run - <<'JS'\nreturn 6 * 7;\nJS"`), true);
   expect(ok.violations).toEqual([]); expect(ok.run).toBe(true);
 });
+
+import { shimScript, CHROME_IN_SANDBOX_ARGS } from "../src/restricted-env.ts";
+test("the ab-cli wrapper runs Chrome without its own sandbox only in restricted runs (Chrome cannot nest Seatbelt inside the exec-deny profile)", () => {
+  const r = shimScript("/h", "/c", "/ab", true), o = shimScript("/h", "/c", "/ab", false);
+  expect(r).toContain(`AGENT_BROWSER_ARGS=${JSON.stringify(CHROME_IN_SANDBOX_ARGS)}`); expect(CHROME_IN_SANDBOX_ARGS).toBe("--no-sandbox");
+  expect(o).not.toContain("AGENT_BROWSER_ARGS");
+  for (const s of [r, o]) { expect(s).toContain('export HOME="/h"'); expect(s).toContain('AGENT_BROWSER_EXECUTABLE_PATH="/c"'); expect(s).toContain('exec "/ab" "$@"'); }
+});

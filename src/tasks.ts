@@ -2,7 +2,7 @@ import * as fx from "./fixtures.ts";
 import { type Evidence, resultShows, inputShows, anyOf, allOf } from "./measure.ts";
 
 export type Task = {
-  id: string; suite: "everyday" | "fixtures" | "heldout" | "blind" | "blind2" | "blind3" | "diag-r9" | "diagnostic"; title: string;
+  id: string; suite: "everyday" | "fixtures" | "heldout" | "blind" | "blind2" | "blind3" | "blind4" | "diag-r9" | "diagnostic"; title: string;
   prompt: (base: string) => string;
   /** Computes truth at check time; never visible to the agent. */
   prepare?: () => Promise<any>;                 // called before the run (e.g. HN snapshot)

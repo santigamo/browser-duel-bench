@@ -3,7 +3,7 @@ import { createHash } from "node:crypto";
 import { RULES_V1, RULES_V1_SHA256, rulesOn, taskPrompt } from "../src/rules.ts";
 import { conductViolations, outsideBrowserFetch } from "../src/workflow.ts";
 import { analyzeShell } from "../src/shell-check.ts";
-import { selects, loadBlind3 } from "../src/suites.ts";
+import { selects, loadBlind3, loadBlind4 } from "../src/suites.ts";
 
 test("rules v1: the text is fixed and its sha256 is pinned (guard/prereg-r9.md quotes the same hash)", () => {
   expect(RULES_V1).toBe("Use the website's own pages through the browser tool. Do not call the site's data or API endpoints, or fetch data outside the browser, unless the task says so. Do any arithmetic or text processing inside the browser tool, not with other programs. Answer only from what you observed in the browser during this task.");
@@ -11,7 +11,7 @@ test("rules v1: the text is fixed and its sha256 is pinned (guard/prereg-r9.md q
   expect(RULES_V1_SHA256).toBe("a14bcfa4169cc0acfe3f860eb60a68dddaebe3518eb43f5ad97c3fcf99537f9e");
 });
 test("default by suite: on for blind3 and diag-r9, off for older suites; the flag overrides; off keeps the old prompt byte for byte", () => {
-  for (const s of ["blind3", "diag-r9"] as const) { expect(rulesOn({ suite: s })).toBe(true); expect(rulesOn({ suite: s }, "off")).toBe(false); }
+  for (const s of ["blind3", "blind4", "diag-r9"] as const) { expect(rulesOn({ suite: s })).toBe(true); expect(rulesOn({ suite: s }, "off")).toBe(false); }
   for (const s of ["everyday", "fixtures", "heldout", "blind", "blind2", "diagnostic"] as const) { expect(rulesOn({ suite: s })).toBe(false); expect(rulesOn({ suite: s }, "v1")).toBe(true); }
   const old = "T\n\nUse only the browse MCP tools to interact with the browser. Put your final answer on the last line as ANSWER: ...";
   expect(taskPrompt("T", "browse MCP tools", false)).toBe(old);
@@ -19,8 +19,8 @@ test("default by suite: on for blind3 and diag-r9, off for older suites; the fla
   expect(on).toContain(RULES_V1); expect(on.replace("agent-browser CLI", "X")).toBe(on2.replace("browse MCP tools", "X"));   // identical block for every variant
 });
 test("blind3 and diag-r9 are never part of `all`; a missing blind3 file loads as absent", async () => {
-  for (const s of ["blind3", "diag-r9"] as const) { expect(selects({ id: "x", suite: s }, ["all"])).toBe(false); expect(selects({ id: "x", suite: s }, [s])).toBe(true); }
-  expect((await loadBlind3("/nonexistent/blind3.ts")).present).toBe(false);
+  for (const s of ["blind3", "blind4", "diag-r9"] as const) { expect(selects({ id: "x", suite: s }, ["all"])).toBe(false); expect(selects({ id: "x", suite: s }, [s])).toBe(true); }
+  expect((await loadBlind3("/nonexistent/blind3.ts")).present).toBe(false); expect((await loadBlind4("/nonexistent/blind4.ts")).present).toBe(false);
 });
 test("agent-browser read is counted as fetching outside the browser, also when chained; other subcommands are browser calls", () => {
   expect(analyzeShell("agent-browser snapshot -i && agent-browser read https://example.com/x", true).subs).toEqual(["snapshot", "read"]);

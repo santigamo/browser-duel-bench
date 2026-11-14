@@ -2,11 +2,13 @@
 // truth computes now, a correct final message passes, a wrong one fails, a marker-less one fails even when its text is right.
 import { blind, blindSamples } from "./tasks.ts";
 import { scoreFinal } from "../src/scoring.ts";
-import { loadBlind2, loadBlind3 } from "../src/suites.ts";
+import { loadBlind2, loadBlind3, loadBlind4 } from "../src/suites.ts";
 const B2 = await loadBlind2();
 const B3 = await loadBlind3();
+const B4 = await loadBlind4();
 const ONLY = process.env.ONLY?.split(",");   // optional: validate only these ids
-const all = [...blind, ...B2.tasks, ...B3.tasks].filter((t) => !ONLY || ONLY.includes(t.id)); const samples: Record<string, any> = { ...blindSamples, ...B2.samples, ...B3.samples };
+const all = [...blind, ...B2.tasks, ...B3.tasks, ...B4.tasks].filter((t) => !ONLY || ONLY.includes(t.id)); const samples: Record<string, any> = { ...blindSamples, ...B2.samples, ...B3.samples, ...B4.samples };
+console.log(B4.present ? `blind4 present: ${B4.tasks.length} tasks` : "blind4/tasks.ts not present");
 console.log(B3.present ? `blind3 present: ${B3.tasks.length} tasks` : "blind3/tasks.ts not present");
 console.log(B2.present ? `blind2 present: ${B2.tasks.length} tasks` : "blind2/tasks.ts not present: validating blind only");
 let pass = 0;

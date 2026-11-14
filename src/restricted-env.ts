@@ -48,3 +48,17 @@ export const SANDBOX_EXEC = "/usr/bin/sandbox-exec";
 export const sandboxAvailable = () => process.platform === "darwin" && existsSync(SANDBOX_EXEC);
 /** argv -> the same command under the exec-deny profile. */
 export const sandboxed = (argv: string[]) => [SANDBOX_EXEC, "-p", execDenyProfile(), ...argv];
+
+/**
+ * Chrome applies its own macOS Seatbelt sandbox to its network/GPU/renderer processes. A process can carry only one Seatbelt profile, so inside the
+ * `sandboxed()` tree (exec deny) that call fails ("sandbox initialization failed: Operation not permitted"), Chrome's helpers crash and a NEW daemon that
+ * the agent starts reports "Auto-launch failed: CDP response channel closed". Daemons the harness warms outside the sandbox were unaffected, which hid it
+ * (the agent's `--session <new>` always failed, the pre-launched warm session worked). Fix: run Chrome without its own sandbox in restricted ab-cli runs.
+ * The agent exec restrictions (PATH + exec deny) are untouched; the flag is applied in the wrapper so that every session, warm or agent-opened, is identical.
+ */
+export const CHROME_IN_SANDBOX_ARGS = "--no-sandbox";
+/** Text of the `agent-browser` wrapper placed first on the agent's PATH. `restricted` = the run is under the exec-deny sandbox. */
+export function shimScript(home: string, chrome: string, real: string, restricted: boolean): string {
+  const args = restricted ? ` AGENT_BROWSER_ARGS=${JSON.stringify(CHROME_IN_SANDBOX_ARGS)}` : "";
+  return `#!/bin/sh\nexport HOME=${JSON.stringify(home)} AGENT_BROWSER_EXECUTABLE_PATH=${JSON.stringify(chrome)}${args}\nexec ${JSON.stringify(real)} "$@"\n`;
+}

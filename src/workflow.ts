@@ -4,7 +4,7 @@ import type { ApiFinding } from "./api-detect.ts";
 import { missingEvidence, type Transcript } from "./measure.ts";
 
 /** Endpoint policy applies to the blind suites; `allowApi` on a task is the only exception (the prompt itself allows those endpoints). */
-export const endpointPolicyApplies = (t: Task) => t.suite === "blind" || t.suite === "blind2" || t.suite === "blind3" || t.suite === "diag-r9";
+export const endpointPolicyApplies = (t: Task) => t.suite === "blind" || t.suite === "blind2" || t.suite === "blind3" || t.suite === "blind4" || t.suite === "diag-r9";
 
 /**
  * Violations of the endpoint policy beyond the typed/recorded navigations run.ts already tests against `task.forbidden`:

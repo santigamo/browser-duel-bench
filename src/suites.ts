@@ -27,7 +27,7 @@ export async function loadBlind2(file = BLIND2_FILE): Promise<Blind2> {
 
 /** Selection rule shared by run.ts and the tests: ids, suite names, and `all` = the development suites (never blind, blind2 or diagnostic). */
 export const selects = (t: Pick<Task, "id" | "suite">, sel: string[]) =>
-  sel.some((s) => s === t.id || s === t.suite || (s === "all" && !["blind", "blind2", "blind3", "diag-r9", "diagnostic"].includes(t.suite)));
+  sel.some((s) => s === t.id || s === t.suite || (s === "all" && !["blind", "blind2", "blind3", "blind4", "diag-r9", "diagnostic"].includes(t.suite)));
 
 // blind3 (d1..d40): the r9 preregistered suite (guard/prereg-r9.md), loaded from bench/blind3/tasks.ts IF THAT FILE EXISTS (written by the independent author, never by this module).
 // Same contract as blind2: `export const blind3: Task[]` (ids d<number>) and optional `export const blind3Samples`. The rules block (src/rules.ts) is stated by default for these tasks.
@@ -45,4 +45,22 @@ export async function loadBlind3(file = BLIND3_FILE): Promise<Blind3> {
     return { ...t, suite: "blind3" as const };
   });
   return { present: true, tasks, samples: m.blind3Samples ?? {} };
+}
+
+// blind4 (g1..g40): the r10 preregistered suite (guard/prereg-r10.md), loaded from bench/blind4/tasks.ts IF THAT FILE EXISTS (written by the independent author, never by this module).
+// Same contract as blind2/blind3: `export const blind4: Task[]` (ids g<number>) and optional `export const blind4Samples`. Rules v1 are stated by default for these tasks.
+export const BLIND4_FILE = join(B, "blind4/tasks.ts");
+export type Blind4 = Blind2;
+export async function loadBlind4(file = BLIND4_FILE): Promise<Blind4> {
+  if (!existsSync(file)) return { present: false, tasks: [], samples: {} };
+  const m: any = await import(file);
+  if (!Array.isArray(m.blind4)) throw new Error("blind4/tasks.ts must export `blind4: Task[]`");
+  const ids = new Set<string>();
+  const tasks: Task[] = m.blind4.map((t: Task) => {
+    if (!/^g\d+$/.test(t.id)) throw new Error(`blind4 task id ${JSON.stringify(t.id)} must look like g1..g40`);
+    if (ids.has(t.id)) throw new Error(`blind4 task id ${t.id} is duplicated`);
+    ids.add(t.id);
+    return { ...t, suite: "blind4" as const };
+  });
+  return { present: true, tasks, samples: m.blind4Samples ?? {} };
 }

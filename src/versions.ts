@@ -7,7 +7,7 @@ import { CONTRACT_VERSION } from "./scoring.ts";
 const B = resolve(import.meta.dir, "..");
 const FILES: Record<string, string[]> = {
   everyday: ["src/tasks.ts", "src/fixtures.ts"], fixtures: ["src/tasks.ts", "src/fixtures.ts"], heldout: ["src/tasks.ts", "src/fixtures.ts"],
-  blind: ["blind/tasks.ts", "blind/lib.ts"], blind2: ["blind2/tasks.ts", "blind/lib.ts"], blind3: ["blind3/tasks.ts", "blind/lib.ts"],
+  blind: ["blind/tasks.ts", "blind/lib.ts"], blind2: ["blind2/tasks.ts", "blind/lib.ts"], blind3: ["blind3/tasks.ts", "blind/lib.ts"], blind4: ["blind4/tasks.ts", "blind/lib.ts"],
   // blind3 was missing from this table during the r9 run: those rows carry a checker_sha that does not cover blind3/tasks.ts (guard/prereg-r9.md, POST HOC deviation 4)
 };
 const COMMON = ["src/measure.ts", "src/scoring.ts"];
@@ -21,7 +21,7 @@ let gitInfo: { commit: string; dirty: boolean } | undefined;
 export function harnessGit() {
   if (!gitInfo) {
     const run = (a: string[]) => Bun.spawnSync(["git", "-C", B, ...a]).stdout.toString().trim();
-    gitInfo = { commit: run(["rev-parse", "--short=10", "HEAD"]), dirty: run(["status", "--porcelain", "--", "src", "blind", "blind2", "guard"]).length > 0 };
+    gitInfo = { commit: run(["rev-parse", "--short=10", "HEAD"]), dirty: run(["status", "--porcelain", "--", "src", "blind", "blind2", "blind3", "blind4", "guard"]).length > 0 };
   }
   return gitInfo;
 }

@@ -4,7 +4,7 @@
 import { mkdtempSync, mkdirSync, writeFileSync, chmodSync, readdirSync, rmSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { handle } from "../src/fixtures.ts";
-import { linkTextTools, sandboxed } from "../src/restricted-env.ts";
+import { linkTextTools, sandboxed, shimScript } from "../src/restricted-env.ts";
 
 const B = resolve(import.meta.dir, ".."), ROOT = resolve(B, "..");
 const argv = process.argv.slice(2); const abBin = resolve(argv[argv.indexOf("--ab-bin") + 1] ?? join(ROOT, "agent-browser-r8/cli/target/release/agent-browser"));
@@ -12,7 +12,7 @@ const d = join(B, ".cache/chrome"); const v = readdirSync(d).find((x) => x.start
 const CHROME = join(d, v, readdirSync(join(d, v))[0], "Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing");
 const server = Bun.serve({ port: 0, hostname: "127.0.0.1", fetch: handle }); const BASE = `http://127.0.0.1:${server.port}`;
 const run = mkdtempSync("/tmp/bd-rsh-"); const home = join(run, "home"); mkdirSync(home); const bin = join(run, "bin"); mkdirSync(bin);
-writeFileSync(join(bin, "agent-browser"), `#!/bin/sh\nexport HOME=${JSON.stringify(home)} AGENT_BROWSER_EXECUTABLE_PATH=${JSON.stringify(CHROME)}\nexec ${JSON.stringify(abBin)} "$@"\n`); chmodSync(join(bin, "agent-browser"), 0o755);
+writeFileSync(join(bin, "agent-browser"), shimScript(home, CHROME, abBin, true)); chmodSync(join(bin, "agent-browser"), 0o755);
 const tools = linkTextTools(bin);
 let failures = 0; const check = (n: string, ok: boolean, detail = "") => { console.log(`${ok ? "PASS" : "FAIL"} ${n} ${detail}`); if (!ok) failures++; };
 // same flow as run.ts: warm the browser from the harness, then the agent's shell

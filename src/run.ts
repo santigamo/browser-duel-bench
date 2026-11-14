@@ -6,13 +6,13 @@ import { createHash } from "node:crypto";
 import { tasks, type Task } from "./tasks.ts";
 import { handle } from "./fixtures.ts";
 import { blind, blindSamples } from "../blind/tasks.ts";
-import { loadBlind2, loadBlind3, selects } from "./suites.ts";
+import { loadBlind2, loadBlind3, loadBlind4, selects } from "./suites.ts";
 import { summarize } from "./summarize.ts";
 import { mcpAdvertised } from "./mcp-static.ts";
 import { analyzeShell } from "./shell-check.ts";
 import { isQuotaText, planRuns, unwrapCodexCommand, transcriptFromEvents } from "./measure.ts";
 import { NavRecorder, fixedPortDiscover, processDiscover, chromePids, type NavResult } from "./nav-recorder.ts";
-import { linkTextTools, linkHostTools, sandboxed, sandboxAvailable } from "./restricted-env.ts";
+import { linkTextTools, linkHostTools, sandboxed, sandboxAvailable, shimScript } from "./restricted-env.ts";
 import { apiAccess } from "./api-detect.ts";
 import { partialUsage, estimateCostUsd } from "./usage.ts";
 import { checkerVersion } from "./versions.ts";
@@ -41,7 +41,7 @@ const TIMEOUT = Number(args.get("timeout") ?? 420) * 1000;
 /** Endpoint policy (guard/endpoint-policy.md): API-like requests from page code or navigations count as violations in the blind suites. `--endpoint-policy off` restores the older, navigation-only rule. */
 const ENDPOINT = args.get("endpoint-policy") ?? "on";
 if (ENDPOINT !== "on" && ENDPOINT !== "off") throw new Error("--endpoint-policy is on or off");
-/** Rules block stated to the agent (src/rules.ts), identical for every variant. `--rules v1` always, `--rules off` never; default: on for the suites blind3 and diag-r9, off for older suites (their prompts stay byte-identical). */
+/** Rules block stated to the agent (src/rules.ts), identical for every variant. `--rules v1` always, `--rules off` never; default: on for the suites blind3, blind4 and diag-r9, off for older suites (their prompts stay byte-identical). */
 const RULES = args.get("rules");
 if (RULES !== undefined && RULES !== "v1" && RULES !== "off") throw new Error("--rules is v1 or off");
 const HANDOFF = args.get("handoff") ?? "end";
@@ -67,12 +67,14 @@ const B2 = await loadBlind2();
 if (sel.includes("blind2") && !B2.present) throw new Error("--tasks blind2 but blind2/tasks.ts does not exist");
 const B3 = await loadBlind3();
 if (sel.includes("blind3") && !B3.present) throw new Error("--tasks blind3 but blind3/tasks.ts does not exist");
-const wanted: Task[] = [...tasks, ...blind, ...B2.tasks, ...B3.tasks].filter((t) => selects(t, sel));
+const B4 = await loadBlind4();
+if (sel.includes("blind4") && !B4.present) throw new Error("--tasks blind4 but blind4/tasks.ts does not exist");
+const wanted: Task[] = [...tasks, ...blind, ...B2.tasks, ...B3.tasks, ...B4.tasks].filter((t) => selects(t, sel));
 if (!wanted.length) throw new Error("no tasks selected");
 // Contract preflight (src/scoring.ts): a harness/checker mismatch stops here, before any agent run or spend. `--preflight offline` skips only the network part.
 const PREFLIGHT = args.get("preflight") ?? "full";
 if (PREFLIGHT !== "full" && PREFLIGHT !== "offline") throw new Error("--preflight is full or offline");
-const preflightProblems = await contractPreflight(wanted, { ...blindSamples, ...B2.samples, ...B3.samples }, { offline: PREFLIGHT === "offline" });
+const preflightProblems = await contractPreflight(wanted, { ...blindSamples, ...B2.samples, ...B3.samples, ...B4.samples }, { offline: PREFLIGHT === "offline" });
 if (preflightProblems.length) { console.error("SCORING CONTRACT MISMATCH, no run started:\n" + preflightProblems.map((x) => " - " + x).join("\n")); process.exit(2); }
 console.log(`scoring contract preflight (${PREFLIGHT}) ok for ${wanted.length} tasks`);
 const server = Bun.serve({ port: PORT, hostname: "127.0.0.1", fetch: handle });
@@ -110,10 +112,10 @@ async function resetBrowse() {
 type Prep = { restricted?: boolean; env: Record<string, string>; mcp?: Record<string, { command: string; args: string[]; env: Record<string, string> }>; systemPrompt?: string; shell: boolean; warm?: () => void; cleanup: () => void; };
 type Variant = { id: string; base: string; label: string; toolName: string; prep(runDir: string, home: string): Prep };
 const abBin = (lab: string) => BINS[lab] ?? DEFAULT_AB;
-function shim(runDir: string, home: string, real: string) {
+function shim(runDir: string, home: string, real: string, restricted = false) {
   const bin = join(runDir, "bin"); mkdirSync(bin, { recursive: true });
   const f = join(bin, "agent-browser");
-  writeFileSync(f, `#!/bin/sh\nexport HOME=${JSON.stringify(home)} AGENT_BROWSER_EXECUTABLE_PATH=${JSON.stringify(CHROME)}\nexec ${JSON.stringify(real)} "$@"\n`); chmodSync(f, 0o755);
+  writeFileSync(f, shimScript(home, CHROME, real, restricted)); chmodSync(f, 0o755);
   return { bin, f };
 }
 function makeVariant(spec: string): Variant {
@@ -121,10 +123,11 @@ function makeVariant(spec: string): Variant {
   const id = spec;
   if (base === "none") return { id, base, label: lab, toolName: "", prep: () => ({ env: {}, shell: false, cleanup() {} }) };
   if (base === "ab-cli") return { id, base, label: lab, toolName: "agent-browser CLI", prep(r, home) {
-    const { bin, f } = shim(r, home, abBin(lab));
+    const restricted = SHELL_MODE === "restricted";
+    const { bin, f } = shim(r, home, abBin(lab), restricted);
     const stub = readFileSync(join(ABDIR(lab), "skills/agent-browser/SKILL.md"), "utf8").replace(/^---[\s\S]*?---\n/, "");
     const sess = () => { const t = Bun.spawnSync([f, "session", "id", "--scope", "worktree", "--prefix", "task"], { cwd: r }).stdout.toString().trim(); return t; };
-    const restricted = SHELL_MODE === "restricted"; if (restricted) linkTextTools(bin);
+    if (restricted) linkTextTools(bin);
     const host = join(r, "host"); if (restricted && RUNNER === "claude") linkHostTools(host); // claude finds its login through `security`
     return { restricted, env: { PATH: restricted ? (RUNNER === "claude" ? `${bin}:${host}` : bin) : `${bin}:${SYS_PATH}` }, systemPrompt: stub, shell: true,
       warm() { Bun.spawnSync([f, "open", "about:blank"], { cwd: r, timeout: 60000 }); const t = sess(); if (t) Bun.spawnSync([f, "--session", t, "open", "about:blank"], { cwd: r, timeout: 60000 }); },
@@ -308,13 +311,19 @@ const sha256File = (f: string) => { try { return createHash("sha256").update(rea
 const gitHead = (dir: string) => { const o = Bun.spawnSync(["git", "-C", dir, "rev-parse", "HEAD"]); return o.exitCode === 0 ? o.stdout.toString().trim() : "unavailable"; };
 const stamp = new Date().toISOString().replace(/[:.]/g, "-").slice(0, 19);
 const OUT = join(B, "results", stamp + (label ? "-" + label : "")); mkdirSync(join(OUT, "transcripts"), { recursive: true });
-const meta: any = { started: new Date().toISOString(), contract_version: CONTRACT_VERSION, preflight: PREFLIGHT, runner: RUNNER, model: MODEL || "(codex config)", variants, tasks: wanted.map((t) => t.id), task_suites: Object.fromEntries(wanted.map((t) => [t.id, t.suite])), blind2_file: B2.present, blind3_file: B3.present, n: N, seed: SEED, order: "variant order shuffled within every task x rep block (measure.ts planRuns)", warm: WARM, timeout_s: TIMEOUT / 1000, shell_mode: SHELL_MODE, rules_flag: RULES ?? "default-by-suite", rules_v1_sha256: RULES_V1_SHA256, rules_v1: RULES_V1, shell_restriction: SHELL_MODE === "restricted" ? { path: "agent-browser wrapper + text tools only", exec_deny: "sandbox-exec profile (src/restricted-env.ts)" } : "none", bins: BINS,
-  ab_versions: Object.fromEntries(Object.entries(BINS).map(([k, b]) => [k, Bun.spawnSync([b, "--version"]).stdout.toString().trim()])), browse_version: Bun.spawnSync([NODE, BROWSE_CLI, "--version"]).stdout.toString().trim(),
+const meta: any = { started: new Date().toISOString(), contract_version: CONTRACT_VERSION, preflight: PREFLIGHT, runner: RUNNER, model: MODEL || "(codex config)", variants, tasks: wanted.map((t) => t.id), task_suites: Object.fromEntries(wanted.map((t) => [t.id, t.suite])), blind2_file: B2.present, blind3_file: B3.present, blind4_file: B4.present, n: N, seed: SEED, order: "variant order shuffled within every task x rep block (measure.ts planRuns)", warm: WARM, timeout_s: TIMEOUT / 1000, shell_mode: SHELL_MODE, rules_flag: RULES ?? "default-by-suite", rules_v1_sha256: RULES_V1_SHA256, rules_v1: RULES_V1, shell_restriction: SHELL_MODE === "restricted" ? { path: "agent-browser wrapper + text tools only", exec_deny: "sandbox-exec profile (src/restricted-env.ts)" } : "none", bins: BINS,
+  ab_versions: Object.fromEntries(Object.entries(BINS).map(([k, b]) => [k, existsSync(b) ? Bun.spawnSync([b, "--version"]).stdout.toString().trim() : "binary absent (unused alias)"])), browse_version: Bun.spawnSync([NODE, BROWSE_CLI, "--version"]).stdout.toString().trim(),
   claude: Bun.spawnSync([CLAUDE_BIN, "--version"]).stdout.toString().trim(), chrome: CHROME,
   // provenance of what actually ran, so a later reader can check it against the preregistration
   bin_sha256: Object.fromEntries(Object.entries(BINS).map(([k, b]) => [k, sha256File(b)])),
   stub_sha256: Object.fromEntries(Object.keys(BINS).map((k) => [k, sha256File(join(ABDIR(k), "skills/agent-browser/SKILL.md"))])),
-  task_file_sha256: Object.fromEntries(["src/tasks.ts", "blind/tasks.ts", "blind2/tasks.ts", "blind3/tasks.ts"].filter((f) => existsSync(join(B, f))).map((f) => [f, sha256File(join(B, f))])),
+  task_file_sha256: Object.fromEntries(["src/tasks.ts", "blind/tasks.ts", "blind2/tasks.ts", "blind3/tasks.ts", "blind4/tasks.ts"].filter((f) => existsSync(join(B, f))).map((f) => [f, sha256File(join(B, f))])),
+  // per VARIANT (a variant label that is not in --bins falls back to the default binary, so the alias maps above can miss it): what ran and what the model was given as its stub
+  variant_provenance: Object.fromEntries(variants.map((v) => { const [base, lab = "main"] = v.split(":");
+    if (base === "browse-mcp") return [v, { browse_commit: gitHead(join(ROOT, "browse")) }];
+    if (base === "none") return [v, {}];
+    const bin = abBin(lab), stubFile = join(ABDIR(lab), "skills/agent-browser/SKILL.md"), delivered = base === "ab-cli" && existsSync(stubFile) ? readFileSync(stubFile, "utf8").replace(/^---[\s\S]*?---\n/, "") : null;
+    return [v, { bin, bin_sha256: sha256File(bin), ab_commit: gitHead(ABDIR(lab)), ...(base === "ab-cli" ? { stub_file: stubFile, stub_file_sha256: sha256File(stubFile), stub_delivered_sha256: delivered === null ? "unavailable" : createHash("sha256").update(delivered).digest("hex"), stub_delivered_bytes: delivered === null ? null : Buffer.byteLength(delivered), stub_delivery: "system prompt, SKILL.md without its frontmatter, unmodified" } : { stub_delivery: "none (MCP server instructions only)" }) }]; })),
   ab_commit: Object.fromEntries(Object.keys(BINS).map((k) => [k, gitHead(ABDIR(k))])), browse_commit: gitHead(join(ROOT, "browse")),
   os: [Bun.spawnSync(["sw_vers", "-productVersion"]).stdout.toString().trim(), Bun.spawnSync(["uname", "-mrs"]).stdout.toString().trim()].join(" / ") };
 writeFileSync(join(OUT, "meta.json"), JSON.stringify(meta, null, 2));

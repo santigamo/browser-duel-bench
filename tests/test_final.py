@@ -337,6 +337,25 @@ class R9Report(unittest.TestCase):
                          'duration_ms', 'priced alike', 'whole first turn read from cache', 'cold cache', '1 tasks' if False else '>= 2/3'):
                 self.assertIn(must, extra)
 
+    def test_r10_report_has_primary_and_secondary_gates_split_and_cache_sensitivities(self):
+        with tempfile.TemporaryDirectory() as b:
+            rows = []
+            tasks = ['g1', 'g2', 'g3', 'g4']; vs = ['ab-cli:r10', 'ab-cli:v043', 'browse-mcp']
+            for t in tasks:
+                for v, c, pk in (('ab-cli:r10', 0.010, 2000), ('ab-cli:v043', 0.020, 3000), ('browse-mcp', 0.030, 4000)):
+                    rows.append(row(t, v, 1, ok=True, cost_usd=c, wall_s=5.0, peak_ctx=pk, num_turns=4))
+            d = mkdir(b, 'x', rows, tasks, vs, 1)
+            for t in tasks:
+                for v in vs:
+                    write_transcript(b, d, t, v, 1, [('a1', 2, 500, 500), ('a2', 2, 100, 1000)], duration_ms=5000)
+            m = {'dirs': [{'dir': d}], 'report': 'r10', 'primary': ['ab-cli:r10', 'ab-cli:v043'], 'secondary': 'browse-mcp'}
+            rs, rep = final.collect(m, b)
+            txt = final.r10_report(rs, rep, m, iters=40)
+            for must in ('r10 gates, PRIMARY', 'r10 gates, SECONDARY', 'ab-cli:r10 / ab-cli:v043', 'ab-cli:r10 / browse-mcp', 'cost (cost_usd) ratio', 'CLAIM MADE', 'wall (charged), descriptive',
+                         '## Static / dynamic split of cost and context', 'dynamic cost ratio', 'Leave-one-task-out ranges', 'priced alike', 'whole first turn read from cache', 'cold cache', 'blind4 (g1-g40)'):
+                self.assertIn(must, txt)
+            self.assertNotIn('excluding d16', txt); self.assertNotIn('repetition 1 only', txt)   # N=1: no per-repetition rows; no r9 post hoc exclusions
+
     def test_cost_variants_order_as_the_prices_say(self):
         with tempfile.TemporaryDirectory() as b:
             d = self._two_tool_rows(b)

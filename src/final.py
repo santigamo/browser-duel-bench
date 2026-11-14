@@ -367,7 +367,7 @@ def bootstrap_rate_diff(R, a, b, f, mode, iters, rng, field='clean'):
     return point, lo, hi, len(tasks)
 
 GROUPS = {'everyday (e)': lambda t: t.startswith('e'), 'held-out (h)': lambda t: t.startswith('h'),
-          'fixtures (f)': lambda t: t.startswith('f'), 'blind (b1-b20)': lambda t: re.fullmatch(r'b\d+', t) is not None, 'blind2 (c1-c20)': lambda t: re.fullmatch(r'c\d+', t) is not None, 'blind3 (d1-d40)': lambda t: re.fullmatch(r'd\d+', t) is not None, 'ALL': lambda t: True}
+          'fixtures (f)': lambda t: t.startswith('f'), 'blind (b1-b20)': lambda t: re.fullmatch(r'b\d+', t) is not None, 'blind2 (c1-c20)': lambda t: re.fullmatch(r'c\d+', t) is not None, 'blind3 (d1-d40)': lambda t: re.fullmatch(r'd\d+', t) is not None, 'blind4 (g1-g40)': lambda t: re.fullmatch(r'g\d+', t) is not None, 'ALL': lambda t: True}
 METRICS = [('cost_usd', 'cost USD (primary)'), ('peak_ctx', 'peak context tokens'), ('steps', 'steps'), ('wall_s', 'wall s'), ('cost_weighted', 'cost-weighted tokens (PROXY)')]
 
 def manifest_pair(manifest):
@@ -762,11 +762,11 @@ def build_blind2_report(rows, per_dir, manifest, iters=2000, seed=7):
     P(''); out += extended_sections(R, variants, [tuple(primary), tuple(secondary)], iters, rng)
     return '\n'.join(out)
 
-def r9_gates(rows, a, b, iters=2000, seed=7, f=lambda t: re.fullmatch(r'd\d+', t) is not None):
+def r9_gates(rows, a, b, iters=2000, seed=7, f=lambda t: re.fullmatch(r'd\d+', t) is not None, title=None):
     """Gate table of guard/prereg-r9.md over the blind3 tasks, a = ab-cli (r9), b = browse-mcp. Geometric mean of per-task medians, hierarchical bootstrap 95% CI."""
     rng = random.Random(seed); R = [r for r in rows if f(r['task'])]
     out = []; P = out.append
-    P('## r9 gates (guard/prereg-r9.md): %s / %s, blind3 tasks' % (a, b)); P('')
+    P(title or ('## r9 gates (guard/prereg-r9.md): %s / %s, blind3 tasks' % (a, b))); P('')
     P('| gate | estimate [95% CI] | threshold | verdict |'); P('|---|---|---|---|')
     for k, nm, lim in (('cost_usd', 'cost (cost_usd)', 0.85), ('peak_ctx', 'peak context', 0.90)):
         pt, lo, hi, n = bootstrap_ratio(R, a, b, k, f, 'hier', iters, rng)
@@ -790,11 +790,12 @@ def pooled_rate_diff(R, a, b, tasks, field='clean'):
             sb += bool(r.get(field)); nb += 1
     return sa / na - sb / nb if na and nb else float('nan')
 
-def r9_loo(R, a, b, f):
+def r9_loo(R, a, b, f, title=None):
     """Leave-one-task-out ranges of the gate statistics: each ratio (or the success difference) recomputed without each task in turn."""
     out = []; P = out.append
-    P('## Leave-one-task-out ranges (r9 / browse-mcp, blind3)'); P('')
-    P('Each statistic recomputed 40 times, dropping one task each time (point estimates, no resampling). The all-tasks value is the gate point estimate.'); P('')
+    ntask = len({r['task'] for r in R if f(r['task'])})
+    P(title or '## Leave-one-task-out ranges (r9 / browse-mcp, blind3)'); P('')
+    P('Each statistic recomputed %d times, dropping one task each time' % ntask + ' (point estimates, no resampling). The all-tasks value is the gate point estimate.'); P('')
     P('| statistic | all tasks | leave-one-out min | task dropped for min | leave-one-out max | task dropped for max |'); P('|---|---|---|---|---|---|')
     for k, nm in (('cost_usd', 'cost ratio'), ('peak_ctx', 'peak context ratio'), ('dyn_ctx', 'dynamic peak context ratio'), ('static_cost', 'static cost ratio (model)'), ('dyn_cost', 'dynamic cost ratio (model)'), ('wall_s', 'wall ratio (charged)'), ('wall_cc', 'wall ratio (duration_ms)')):
         full, loo = loo_range(R, a, b, k, f)
@@ -807,7 +808,7 @@ def r9_loo(R, a, b, f):
     P('')
     return out
 
-def r9_sensitivities(R, a, b, iters=2000, seed=7, f=lambda t: re.fullmatch(r'd\d+', t) is not None):
+def r9_sensitivities(R, a, b, iters=2000, seed=7, f=lambda t: re.fullmatch(r'd\d+', t) is not None, title=None, posthoc=True):
     """Pre-registered and extra sensitivities of the r9 report. Every row is a hierarchical bootstrap with its own fresh rng (seed), so rows do not depend on each other's order."""
     R = [r for r in R if f(r['task'])]
     out = []; P = out.append
@@ -822,16 +823,17 @@ def r9_sensitivities(R, a, b, iters=2000, seed=7, f=lambda t: re.fullmatch(r'd\d
         dp, dlo, dhi, nt = bootstrap_rate_diff(RR, a, b, keep, 'hier', iters, rng); c3 = bootstrap_ratio(RR, a, b, wall_key, keep, 'hier', iters, rng)
         cells = [fmt_ci(c[0], c[1], c[2]) if c[3] else 'n/a' for c in (c1, c2, c3)]
         P('| %s | %d | %s | %+.1f [%+.1f, %+.1f] |' % (label, nt, ' | '.join(cells), dp * 100, dlo * 100, dhi * 100))
-    P('## Sensitivities (r9 / browse-mcp, blind3)'); P('')
-    P('Hierarchical bootstrap 95%% CI, seed %d, %d resamples per row; ratios below 1 favour r9, success is r9 minus browse in points. The first row is the gate analysis.' % (seed, iters)); P('')
+    P(title or '## Sensitivities (r9 / browse-mcp, blind3)'); P('')
+    P('Hierarchical bootstrap 95%% CI, seed %d, %d resamples per row; ratios below 1 favour %s, success is %s minus %s in points. The first row is the gate analysis.' % ((seed, iters) + ((('r9', 'r9', 'browse') if posthoc else ('the first tool', 'the first tool', 'the second'))))); P('')
     P('| sensitivity | tasks | cost | peak context | wall | compliant success diff (pts) |'); P('|---|---|---|---|---|---|')
-    row_for('all 40 tasks (gate analysis)', R)
+    row_for('all %d tasks (gate analysis)' % len(allt), R)
     row_for('tasks where both reach >= 2/3 compliant success (at N=2: both succeed 2 of 2): %d tasks' % len(both23), R, lambda t, ks=set(both23): t in ks)
     row_for('excluding tasks failed by every tool (%s)' % ', '.join(failed_by_all), R, lambda t, ks=set(failed_by_all): t not in ks)
-    row_for('excluding d16 (reference answer wrong for the site UI, ungradable)', R, lambda t: t != 'd16')
-    row_for('excluding d21 (browse blocked by Cloudflare, r9 passed)', R, lambda t: t != 'd21')
-    row_for('repetition 1 only', [r for r in R if r['rep'] == 1])
-    row_for('repetition 2 only', [r for r in R if r['rep'] == 2])
+    if posthoc:  # r9-specific post hoc exclusions (guard/prereg-r9.md); other suites carry none
+        row_for('excluding d16 (reference answer wrong for the site UI, ungradable)', R, lambda t: t != 'd16')
+        row_for('excluding d21 (browse blocked by Cloudflare, r9 passed)', R, lambda t: t != 'd21')
+    for rp in sorted({r['rep'] for r in R}) if (posthoc or len({r['rep'] for r in R}) > 1) else []:
+        row_for('repetition %s only' % rp, [r for r in R if r['rep'] == rp])
     ncc = sum(r.get('wall_cc') is None for r in R)
     row_for('wall from Claude Code duration_ms (%d runs without a result event are absent from the wall column)' % ncc, R, wall_key='wall_cc')
     P('')
@@ -856,6 +858,21 @@ def r9_sensitivities(R, a, b, iters=2000, seed=7, f=lambda t: re.fullmatch(r'd\d
     P('')
     return out
 
+def r10_report(rows, per_dir, manifest, iters=2000, seed=7):
+    """Report of guard/prereg-r10.md over blind4 (g1..g40): primary a = ours vs v043 (the gates), secondary a vs browse-mcp (same table, descriptive). Static/dynamic split, leave-one-out
+    ranges and the cache sensitivities are always printed, for both pairs, whatever the outcome. manifest 'primary': [ours, upstream], optional 'secondary': browse-mcp."""
+    g = lambda t: re.fullmatch(r'g\d+', t) is not None
+    o, up = manifest_pair(manifest); a = (o or ['ab-cli:r10'])[0]; sec = manifest.get('secondary') or 'browse-mcp'
+    rows = [r for r in rows if g(r['task'])]
+    gates = r9_gates(rows, a, up, iters, seed, g, title='## r10 gates, PRIMARY (guard/prereg-r10.md): %s / %s, blind4 tasks' % (a, up)) + \
+        r9_gates(rows, a, sec, iters, seed, g, title='## r10 gates, SECONDARY (descriptive): %s / %s, blind4 tasks' % (a, sec))
+    extra = []
+    for ref, tag in ((up, 'PRIMARY'), (sec, 'SECONDARY')):
+        extra += r9_loo(rows, a, ref, g, title='## Leave-one-task-out ranges (%s / %s, blind4, %s)' % (a, ref, tag))
+        extra += r9_sensitivities(rows, a, ref, iters, seed, g, title='## Sensitivities and cache variants (%s / %s, blind4, %s)' % (a, ref, tag), posthoc=False)
+    body = build_report(rows, per_dir, dict(manifest, ours=[a], reference=up, main=sec), iters, seed, gates=gates, title='r10 report: %s / %s (secondary %s)' % (a, up, sec))
+    return body + '\n' + '\n'.join(extra)
+
 def main(argv):
     if not argv:
         print(__doc__); return 2
@@ -872,6 +889,8 @@ def main(argv):
         extra = r9_loo(rows, ours, ref, lambda t: re.fullmatch(r'd\d+', t) is not None) + r9_sensitivities(rows, ours, ref, iters, seed)
         body = build_report(rows, per_dir, dict(manifest, ours=[ours], reference=ref), iters, seed, gates=r9_gates(rows, ours, ref, iters, seed), title='r9 report: %s / %s' % (ours, ref))
         print(body + '\n' + '\n'.join(extra))
+    elif kind == 'r10':
+        print(r10_report(rows, per_dir, manifest, iters, seed))
     else:
         print(build_report(rows, per_dir, manifest, iters, seed))
     return 0
